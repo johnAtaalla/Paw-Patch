@@ -1,0 +1,24 @@
+
+.navbar {
+    background-color: #EAA78A;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.home-item {
+    text-align: center;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#ffffff;
+    text-align: center;
+    background: rgb(37, 37, 37);
+    display: inline-block;
+    margin-right: 40px;
+    word-wrap: break-word;
+  }
