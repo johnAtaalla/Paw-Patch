@@ -8,6 +8,7 @@
     text-align: center;
 }
 
+/* home page circles */
 .circle {
     width: 200px;
     height: 200px;
@@ -22,3 +23,53 @@
     margin-right: 40px;
     word-wrap: break-word;
   }
+
+.mr-3 {
+    height: 200px;
+    width: 100px;
+}
+
+/* about us page */
+.header {
+    padding: 40px;
+    text-align: center;
+    background: white;
+    color:#EAA78A;
+    font-size: 20px;
+  }
+.our-desc{
+    text-align: center;
+    background-color:#EAA78A;
+    color: white;
+    font-size: 40px
+}
+#name-desc {
+    border: 5px solid;
+    margin: auto;
+    padding: 70px;
+    color:grey;
+}
+.about-us{
+    font-style: oblique;
+    font-size: 20px;
+}
+
+/* login page */
+.login{
+    margin-top: 100px;
+    padding: 25px;
+    border:5px solid grey;
+}
+
+.submit{
+    background-color:white;
+    transition-duration:.4s;
+    border-color: #EAA78A;
+    color:black;
+}
+
+.submit:hover{
+    background-color: #EAA78A;
+    border-color: #EAA78A;
+    color: white;
+}
