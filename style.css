@@ -73,3 +73,27 @@
     border-color: #EAA78A;
     color: white;
 }
+
+/* Vaccination Page */
+#vacc-desc {
+    border: 5px solid;
+    margin: auto;
+    padding: 20px;
+    color:grey;
+    text-align: left;
+}
+
+.vacc-add {
+    padding: 5px;
+    margin: auto;
+    margin-left: 10px;
+    background-color: white;
+    border-color: black;
+    color: black;
+}
+
+.vacc-add:hover {
+    background-color: grey;
+    transition-duration: .4s;
+    border-color: black;
+}
