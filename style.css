@@ -6,6 +6,7 @@
 
 .home-item {
     text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* home page circles */
@@ -22,11 +23,13 @@
     display: inline-block;
     margin-right: 40px;
     word-wrap: break-word;
+    
   }
 
 .mr-3 {
     height: 200px;
     width: 100px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* about us page */
@@ -36,22 +39,27 @@
     background: white;
     color:#EAA78A;
     font-size: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 .our-desc{
     text-align: center;
     background-color:#EAA78A;
     color: white;
-    font-size: 40px
+    font-size: 40px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
 }
 #name-desc {
     border: 5px solid;
     margin: auto;
     padding: 70px;
     color:grey;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .about-us{
     font-style: oblique;
     font-size: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* login page */
@@ -59,6 +67,7 @@
     margin-top: 100px;
     padding: 25px;
     border:5px solid grey;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .submit{
@@ -66,12 +75,14 @@
     transition-duration:.4s;
     border-color: #EAA78A;
     color:black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .submit:hover{
     background-color: #EAA78A;
     border-color: #EAA78A;
     color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Vaccination Page */
@@ -81,6 +92,8 @@
     padding: 20px;
     color:grey;
     text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 10px;
 }
 
 .vacc-add {
@@ -90,12 +103,15 @@
     background-color: white;
     border-color: black;
     color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
 }
 
 .vacc-add:hover {
     background-color: grey;
     transition-duration: .4s;
     border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Pets Page */
@@ -106,11 +122,16 @@
     background-color: white;
     border-color: black;
     color: black;
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
 }
 .pet-add:hover {
     background-color: grey;
     transition-duration: .4s;
     border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 #pet-desc {
@@ -119,4 +140,81 @@
     padding: 20px;
     color:grey;
     text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 10px;
+}
+
+/* Medications Page */
+.med-add {
+    padding: 5px;
+    margin: auto;
+    margin-left: 10px;
+    background-color: white;
+    border-color: black;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+}
+.med-add:hover {
+    background-color: grey;
+    transition-duration: .4s;
+    border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#med-desc {
+    border: 5px solid;
+    margin: auto;
+    padding: 20px;
+    color:grey;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 10px;
+}
+
+/* Account Page */
+.profile-add {
+    padding: 5px;
+    margin: auto;
+    margin-left: 10px;
+    background-color: white;
+    border-color: black;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.profile-add:hover {
+    background-color: grey;
+    transition-duration: .4s;
+    border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#profile-desc {
+    border: 5px solid;
+    margin: auto;
+    padding: 20px;
+    color:grey;
+    text-align: left;
+    margin-right: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar {
+    color:dimgrey;
+    padding-top: 15px;
+    font-size: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: left;
+    background-color: #EAA78A;
+    margin-bottom:10px;
+}
+
+.nav-link:hover {
+    color:black;
+}
+
+.activated {
+    color:black;
 }
