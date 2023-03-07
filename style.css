@@ -218,3 +218,31 @@
 .activated {
     color:black;
 }
+
+/* Diet page */
+.diet-add {
+    padding: 5px;
+    margin: auto;
+    margin-left: 10px;
+    background-color: white;
+    border-color: black;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+}
+.diet-add:hover {
+    background-color: grey;
+    transition-duration: .4s;
+    border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#diet-desc {
+    border: 5px solid;
+    margin: auto;
+    padding: 20px;
+    color:grey;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 10px;
+}
