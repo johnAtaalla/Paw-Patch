@@ -35,26 +35,29 @@
         <div class="col"></div>
       <div class="login col-6">
         <h1>Create Account:</h1>
-      <form>
+      <form action="registerConnect.php" method="post">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <label for="Fname" class="form-label">First Name</label>
+          <input  class="form-control" id="Fname" name="firstName" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+          <label for="Lname" class="form-label">Last Name</label>
+          <input  class="form-control" id="Lname" name="lastName" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+          <label for="Email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" required>
           <div id="emailHelp" class="form-text">Please enter your email</div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Username</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">Please enter a username</div>
-        </div>
-        <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">New Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Repeat New Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <label for="repeatPassword" class="form-label">Repeat New Password</label>
+          <input type="password" class="form-control" id="repeatPassword" required>
         </div>
-        <button type="submit" class="submit btn btn-primary">Enter</button>
+        <button type="submit" class="submit btn btn-primary" name="submit">Enter</button>
       </form> 
       </div> 
       <div class="col"></div>

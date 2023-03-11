@@ -26,6 +26,14 @@
     
   }
 
+  .circle:hover {
+    transform: scale(1.1);
+    font-size: 13px;
+  }
+
+
+
+
 .mr-3 {
     height: 200px;
     width: 100px;
@@ -213,7 +221,10 @@
 
 .nav-link:hover {
     color:black;
+    transform: scale(1.1);
 }
+
+
 
 .activated {
     color:black;

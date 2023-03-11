@@ -35,22 +35,26 @@
         <div class="col"></div>
       <div class="login col-6">
         <h1>Login:</h1>
-      <form>
+      <form action="loginConnect.php" method="post">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Username</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">Please enter your email or username</div>
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" required>
+          <div id="emailHelp" class="form-text">Please enter your email </div>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
         </div>
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Remember me</label>
         </div>
-        <a class="nav-link mb-3 form-label" href="AccountCreate.html">No Account? Create One Here</a>
-        <input type="button" onclick="window.location.href='Account.html';" class="submit btn btn-primary" value="Enter"/>
+        <div class="mb-3">
+          <input type="button" onclick="window.location.href='AccountCreate.html';" class="submit btn btn-primary" value="No Account? Create One Here"/>
+        <br>
+        <br>
+        <input type="submit" name="submit" class="submit btn btn-primary" value="Enter"/>
+      </div>
       </form> 
       </div> 
       <div class="col"></div>    
