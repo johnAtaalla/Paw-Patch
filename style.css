@@ -15,7 +15,7 @@
     height: 200px;
     line-height: 200px;
     border-radius: 50%;
-    font-size: 12px;
+    font-size: 100px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:#ffffff;
     text-align: center;
@@ -28,7 +28,7 @@
 
   .circle:hover {
     transform: scale(1.1);
-    font-size: 13px;
+    font-size: 130px;
   }
 
 
@@ -40,6 +40,18 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.main1 {
+    background-color: lightgray;
+    padding: 10px;
+    height: 350px;
+    
+}
+.main2 {
+    background-color: gray;
+    padding: 10px;
+    height: 350px;
+   
+}
 /* about us page */
 .header {
     padding: 40px;
