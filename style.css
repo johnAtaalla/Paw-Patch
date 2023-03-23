@@ -1,0 +1,348 @@
+.navbar {
+    background-color:  #E4DACF;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: solid;
+    border-width: 1px;
+    
+}
+
+.home-item {
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* home page circles */
+.circle {
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    border-radius: 50%;
+    font-size: 100px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#ffffff;
+    text-align: center;
+    background: rgb(37, 37, 37);
+    display: inline-block;
+    margin-right: 40px;
+    word-wrap: break-word;
+    
+  }
+
+  .circle:hover {
+    transform: scale(1.1);
+    font-size: 130px;
+  }
+
+
+
+
+.mr-3 {
+    height: 200px;
+    width: 100px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main1 {
+    background-color:#B6E2D3;
+    padding: 10px;
+    height: 250px;
+    text-align: center;
+    
+}
+.main2 {
+    background-color: #B6E2D3;
+    padding: 10px;
+    height: 200px;
+   
+    text-align: center;
+   
+}
+/* about us page */
+
+.our-desc{
+    color: black;
+    font-size: 40px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+#name-desc {
+    margin: auto;
+    padding: 10px;
+    color:black;
+    border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.about-us{
+    font-style: oblique;
+    font-size: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* login page */
+.login{
+    margin-top: 100px;
+    padding: 25px;
+    border:5px solid black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #B6E2D3;
+}
+
+.submit{
+    background-color:white;
+    transition-duration:.4s;
+    border-color: #EAA78A;
+    color:black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.submit:hover{
+    background-color: #EAA78A;
+    border-color: #EAA78A;
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Vaccination Page */
+#vacc-desc {
+    border: 5px solid;
+    margin: auto;
+    padding: 20px;
+    color:#60bae2;
+    background-color: #E3F2FD;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 10px;
+}
+
+.vacc-add {
+    padding: 5px;
+    margin: auto;
+    margin-left: 10px;
+    background-color: white;
+    border-color: #60bae2;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+}
+
+.vacc-add:hover {
+    background-color: #60bae2;
+    transition-duration: .4s;
+    border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Pets Page */
+.pet-add {
+    padding: 5px;
+    margin: auto;
+    margin-left: 10px;
+    background-color: white;
+    border-color:black ;
+    color: black;
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+}
+.pet-add:hover {
+    background-color:#E4DACF ;
+    transition-duration: .4s;
+    border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+
+}
+
+#pet-desc {
+    border: 3px solid;
+    margin: auto;
+    padding: 20px;
+    color:black;
+    background-color: #B6E2D3;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 10px;
+}
+
+/* Medications Page */
+.med-add {
+    padding: 5px;
+    margin: auto;
+    margin-left: 10px;
+    background-color: white;
+    border-color: #60bae2;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+}
+.med-add:hover {
+    background-color: #60bae2;
+    transition-duration: .4s;
+    border-color: rgb(75, 75, 75);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#med-desc {
+    border: 5px solid;
+    margin: auto;
+    padding: 20px;
+    color:#60bae2;
+    background-color: #E3F2FD;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 10px;
+}
+
+/* Account Page */
+.profile-add {
+    padding: 5px;
+    margin: auto;
+    margin-left: 10px;
+    background-color: white;
+    border-color: black;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.profile-add:hover {
+    background-color: grey;
+    transition-duration: .4s;
+    border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#profile-desc {
+    background-color: #B6E2D3 ;
+    font-size:20px;
+    margin: auto;
+    padding: 20px;
+    color:black;
+    text-align: left;
+    margin-right: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: solid;
+    border-width: 1px;
+}
+
+.sidebar {
+    color:dimgrey;
+    padding-top: 15px;
+    font-size: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: left;
+    background-color: #E4DACF;
+    margin-bottom:10px;
+    border: solid;
+    border-width: 1px;
+    padding-bottom: 10px;
+    
+}
+
+.nav-link:hover {
+    color:black;
+ 
+}
+
+.navtext{
+    font-size: 15pt;
+  
+}
+
+
+
+.activated {
+    color:black;
+}
+
+/* Diet page */
+.diet-add {
+    padding: 5px;
+    margin: auto;
+    margin-left: 10px;
+    background-color: white;
+    border-color: #60bae2;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+}
+.diet-add:hover {
+    background-color: #60bae2;
+    transition-duration: .4s;
+    border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#diet-desc {
+    border: 5px solid;
+    margin: auto;
+    padding: 20px;
+    color:#60bae2;
+    background-color: #E3F2FD;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 10px;
+}
+
+/* SideBar fontsize and family*/
+.side-bar{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20pt;
+    text-decoration: solid 1px;
+    text-align: center;
+
+}
+
+.welcome-to{
+    padding-top: 20px;
+    padding-bottom: 40px;
+   background-color: #F4B5A0;
+   border-style: solid;
+   border-width: thin;
+   border-top: none;
+   text-align: center;
+}
+
+.homepage-header{
+    text-align: center;
+    text-decoration: underline 2px;
+  
+}
+
+.header {
+    padding-top: 20px;
+    padding-bottom:40px;
+    text-align: center;
+    border-style: solid;
+    border-width: thin;
+    background: #F4B5A0;
+    color:black;
+    font-size: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+.info-block{
+    border-style: solid;
+    border-width: thin;
+}
+
+.body-color{
+    background-color: #F9F1F0;
+}
+
+.red{
+    background-color: red;
+}
+
+.about-box{
+    border: solid;
+    border-width:1px ;
+}
+
+.mint{
+    background-color: #B6E2D3;
+}
+
+.pet-title{
+
+}
