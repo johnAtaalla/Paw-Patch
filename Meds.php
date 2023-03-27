@@ -64,48 +64,52 @@
           <h2 class="our-desc">Medications</h2> 
         </div>
       </div>
-      <br>
-      <div class="our-desc">
-        <h2>Rockys's Medications:</h2>
-      </div>
+     
       <br>
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar">
-                <a class="nav-link" href="Vaccinations.html">Vaccines</a>
-                <a class="nav-link activated" href="Meds.html">Medications</a>
-                <a class="nav-link" href="Pets.html">Pets</a>
-                <a class="nav-link" href="Diet.html">Diet</a>
-                <a class="nav-link" href="Account.html">Account</a>
+            <div class="col-sm sidebar" style="height:450px;">
+            <a class="nav-link side-bar " href="Account.php">Account</a>
+            <hr>
+            <a class="nav-link side-bar" href="Pets.php">Pets</a>
+            <hr>
+                <a class="nav-link side-bar" href="Vaccinations.php">Vaccines</a>
+            <hr>
+                <a class="nav-link side-bar activated" href="Meds.php">Medications</a>
+            <hr>
+                <a class="nav-link side-bar" href="Diet.php">Diet</a>
+            <hr>
+                <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="med-desc">
-            <h2 style="color:black">[Medication Name]</h2>
-            <p class="med-info">Purpose</p>
-            <p class="med-info">Dose/Frequency</p>
-            <p class="med-info">Start/End Date</p>
-            <button type="submit" class="med-add btn btn-primary" style="margin-left: auto">Edit Medication</button>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="container-fluid">
-        <div class="row">
-                <div class="col-sm sidebar" style="background-color:white"></div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="med-desc">
-            <h2 style="color:black">[Medication Name]</h2>
-            <p class="med-info">Purpose</p>
-            <p class="med-info">Dose/Frequency</p>
-            <p class="med-info">Start/End Date</p>
-            <button type="submit" class="med-add btn btn-primary" style="margin-left: auto">Edit Medication</button>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="container-fluid">
-        <div class="row">
-                <div class="col-sm sidebar" style="background-color:white"></div>
           <div class="col-xl-10 col-lg-10 col-md-10">
-      <button type="submit" class="med-add btn btn-primary">Add Medication</button>
+            <div id="profile-desc">
+            <h2 style="color:black" class="card-title">Medication: Arthritis Chews</h2>
+            <p class="card-text">Pet Name: Lulu</p>
+            <p class="card-text">Dose: 2 chews</p>
+            <p class="card-text">Frequency: 2 times/day</p>
+            <p class="card-text">Start: 3/26/23</p>
+            <p class="card-text">End: 4/26/23</p>
+            <button type="submit" class="pet-add btn btn-primary" style="margin-left: auto">Edit Medication</button>
+            </div>
+            <br>
+            <div id="profile-desc">
+            <h2 style="color:black" class="card-title">Medication: Heartworm Pill</h2>
+            <p class="card-text">Pet Name: Lulu</p>
+            <p class="card-text">Dose: 1 pill</p>
+            <p class="card-text">Frequency: 1 time/month</p>
+            <p class="card-text">Start: 1/1/23</p>
+            <p class="card-text">End: n/a</p>
+            <button type="submit" class="pet-add btn btn-primary" style="margin-left: auto">Edit Medication</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="container-fluid">
+        <div class="row">
+                <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
+          <div class="col-xl-10 col-lg-10 col-md-10">
+      <button type="submit" class="pet-add btn btn-primary">Add Medication</button>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>

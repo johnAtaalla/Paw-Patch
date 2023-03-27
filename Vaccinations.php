@@ -65,43 +65,47 @@
         </div>
       </div>
       <br>
-      <div class="our-desc">
-        <h2>Rockys's Vaccination Record:</h2>
-      </div>
+     
 
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm sidebar">
-            <a class="nav-link activated" href="Vaccinations.html">Vaccines</a>
-            <a class="nav-link" href="Meds.html">Medications</a>
-            <a class="nav-link" href="Pets.html">Pets</a>
-            <a class="nav-link" href="Diet.html">Diet</a>
-            <a class="nav-link" href="Account.html">Account</a>
-        </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="vacc-desc">
-            <h2 style="color:black">Vaccination 1</h2>
-            <p class="vaccine-info">Vaccine details...</p>
-            <button type="submit" class="vacc-add btn btn-primary" style="margin-left: auto">Edit Vaccine</button>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm sidebar" style="background-color:white"></div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="vacc-desc">
-            <h2 style="color:black">Vaccination 2</h2>
-            <p class="vaccine-info">Vaccine details...</p>
-            <button type="submit" class="vacc-add btn btn-primary" style="margin-left: auto">Edit Vaccine</button>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm sidebar" style="background-color:white"></div>
+        <div class="col-sm sidebar" style="height:450px;">
+            <a class="nav-link side-bar " href="Account.php">Account</a>
+            <hr>
+            <a class="nav-link side-bar" href="Pets.php">Pets</a>
+            <hr>
+                <a class="nav-link side-bar activated" href="Vaccinations.php">Vaccines</a>
+            <hr>
+                <a class="nav-link side-bar" href="Meds.php">Medications</a>
+            <hr>
+                <a class="nav-link side-bar" href="Diet.php">Diet</a>
+            <hr>
+                <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
+            </div>
           <div class="col-xl-10 col-lg-10 col-md-10">
-          <button type="submit" class="vacc-add btn btn-primary">Add Vaccine</button></div>
+            <div id="profile-desc">
+            <h2 style="color:black" class="card-title">Vaccine: Influenza</h2>
+            <p class="card-text">Pet Name: Lulu</p>
+            <p class="card-text">Date Administered: 2/10/23</p>
+            <p class="card-text">Doses Remaining: 1</p>
+            <button type="submit" class="pet-add btn btn-primary" style="margin-left: auto">Edit Vaccine</button>
+            </div>
+            <br>
+            <div id="profile-desc">
+            <h2 style="color:black" class="card-title">Vaccine: Rabies</h2>
+            <p class="card-text">Pet Name: Bella</p>
+            <p class="card-text">Date Administered: 3/1/23</p>
+            <p class="card-text">Doses Remaining: 0</p>
+            <button type="submit" class="pet-add btn btn-primary" style="margin-left: auto">Edit Vaccine</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row" style="margin-top:10px;">
+          <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
+          <div class="col-xl-10 col-lg-10 col-md-10">
+          <button type="submit" class="pet-create btn btn-primary">Add Vaccine</button></div>
         </div>
       </div>
 

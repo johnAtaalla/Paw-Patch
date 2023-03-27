@@ -72,7 +72,7 @@
         <div class="row">
           <div class="col ">
             <div class="container text-center">
-              <div class="circle"><i class="bi bi-capsule-pill"></i></div>
+              <div class="circle"><image src="images/capsule-pill.svg" style="width:100px; text-align: center; margin-bottom: 20px; filter: invert(1);"></div>
             </div>
             <br>
             <div class="main1 info-block">
@@ -82,7 +82,7 @@
           </div>
           <div class="col">
             <div class="container text-center">
-              <div class="circle"><i class="bi bi-clipboard2-pulse"></i></i></div>
+              <div class="circle"><image src="images/clipboard2-pulse.svg" style="width:100px; text-align: center; margin-bottom: 20px; filter: invert(1);"></div>
             </div>
             <br>
             <div class="main1 info-block">
@@ -92,7 +92,7 @@
           </div>
           <div class="col">
             <div class="container text-center">
-              <div class="circle"><i class="bi bi-heart-pulse"></i></div>
+              <div class="circle"><image src="images/heart-pulse.svg" style="width:100px; text-align: center; margin-bottom: 15px; filter: invert(1);"></div>
             </div>
             <br>
             <div class="main1 info-block">
@@ -102,7 +102,7 @@
           </div>
           <div class="col">
             <div class="container text-center">
-              <div class="circle"><i class="bi bi-person-lines-fill"></i></div>
+              <div class="circle"><image src="images/person-lines-fill.svg" style="width:100px; text-align: center; margin-bottom: 20px; filter: invert(1);"></div>
             </div>
             <br>
             <div class="main1 info-block">

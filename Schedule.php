@@ -62,7 +62,7 @@
 </nav>
       <div class="header">
         <div>
-          <h2 class="our-desc">Diet</h2> 
+          <h2 class="our-desc">Schedule</h2> 
         </div>
       </div>
       <br>
@@ -77,19 +77,20 @@
             <hr>
                 <a class="nav-link side-bar" href="Meds.php">Medications</a>
             <hr>
-                <a class="nav-link side-bar activated" href="Diet.php">Diet</a>
+                <a class="nav-link side-bar" href="Diet.php">Diet</a>
             <hr>
-                <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
+                <a class="nav-link side-bar activated" href="Schedule.php">Schedules</a>
             </div>
           <div class="col-xl-10 col-lg-10 col-md-10">
             <div id="profile-desc">
-            <h2 style="color:black" class="card-title">Diet Information</h2>
+            <h2 style="color:black" class="card-title">Schedule Information</h2>
             <p class="card-text">Pet Name: Lulu</p>
-            <p class="card-text">Brand/Type: Chicken Kibble</p>
-            <p class="card-text">Portion: 2 cups</p>
-            <p class="card-text">Frequency: Twice daily</p>
-            <p class="card-text">Notes: 8am/5pm feeding times</p>
-            <button type="submit" class="pet-add btn btn-primary" style="margin-left: auto">Edit Diet</button>
+            <p class="card-text">Wake Up: 7:30am</p>
+            <p class="card-text">Walk: 8:30am</p>
+            <p class="card-text">Eat: 8am, 5pm</p>
+            <p class="card-text">Sleep: 9pm</p>
+            <p class="card-text">Notes: </p>
+            <button type="submit" class="pet-add btn btn-primary" style="margin-left: auto">Edit Schedule</button>
             </div>
           </div>
         </div>
@@ -99,7 +100,7 @@
         <div class="row">
                 <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
           <div class="col-xl-10 col-lg-10 col-md-10">
-      <button type="submit" class="pet-add btn btn-primary">Add Diet Info</button>
+      <button type="submit" class="pet-add btn btn-primary">Add Schedule Info</button>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
