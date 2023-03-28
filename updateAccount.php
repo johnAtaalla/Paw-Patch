@@ -24,7 +24,7 @@ $email = mysqli_real_escape_string($conn, $_POST['email']);
 $phone = mysqli_real_escape_string($conn, $_POST['phone']);
 $address = mysqli_real_escape_string($conn, $_POST['address']);
 
-// TODO: Validate the input data to prevent SQL injection and other security vulnerabilities
+
 
 $sql = "UPDATE user SET firstname = '$fname', lastname = '$lname', phone = '$phone', address = '$address' WHERE email = '$email'";
 

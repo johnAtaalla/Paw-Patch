@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // Update the pet information in the database
   $stmt = $conn->prepare("UPDATE pet SET Name=?, Species=?, Breed=?, Age=?, Gender=?, Health_Problems=?, General=? WHERE PetID=?");
-  $stmt->bind_param("sssssssi", $_POST['Name'], $_POST['Species'], $_POST['Breed'], $_POST['Age'], $_POST['Gender'], $_POST['Health'], $_POST['General'], $pet_id);
+  $stmt->bind_param("sssssssi", $_POST['Name'], $_POST['Species'], $_POST['Breed'], $_POST['Age'], $_POST['Gender'], $_POST['Health_Problems'], $_POST['General'], $pet_id);
   $stmt->execute();
   $stmt->close();
 

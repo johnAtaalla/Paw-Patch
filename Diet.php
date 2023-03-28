@@ -1,3 +1,9 @@
+<?php
+session_start();
+?>
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,9 +17,7 @@
     <h1><img src="images/Logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">Paw Patch</h1>
 
     
-    <?php
-    session_start();
-  ?>
+
 
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
@@ -30,7 +34,7 @@
           <a class="nav-link  " href="About.php">About Us</a>
         </li>
         <?php
-        session_start();
+       
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,25 +70,78 @@
         </div>
       </div>
       <br>
-      <div class="our-desc">
-        <h2>Rockys's Diet:</h2>
-      </div>
-      <br>
+    
+     
       <div class="container-fluid">
         <div class="row">
             <div class="col-sm sidebar">
-                <a class="nav-link" href="Vaccinations.html">Vaccines</a>
-                <a class="nav-link" href="Meds.html">Medications</a>
-                <a class="nav-link" href="Pets.html">Pets</a>
-                <a class="nav-link activated" href="Diet.html">Diet</a>
-                <a class="nav-link" href="Account.html">Account</a>
+            <a class="nav-link side-bar activated" href="Account.php">Account</a>
+            <hr>
+            <a class="nav-link side-bar" href="Pets.php">Pets</a>
+            <hr>
+                <a class="nav-link side-bar" href="Vaccinations.php">Vaccines</a>
+            <hr>
+                <a class="nav-link side-bar" href="Meds.php">Medications</a>
+            <hr>
+                <a class="nav-link side-bar" href="Diet.php">Diet</a>
+            <hr>
+                <a class="nav-link side-bar" href="Diet.php">Schedules</a>
             </div>
           <div class="col-xl-10 col-lg-10 col-md-10" id="diet-desc">
             <h2 style="color:black">Diet Information</h2>
-            <p class="diet-info">Brand/Type</p>
-            <p class="diet-info">Portion</p>
-            <p class="diet-info">Time(s) given</p>
-            <button type="submit" class="diet-add btn btn-primary" style="margin-left: auto">Edit Diet</button>
+            <br>
+            
+            <?php 
+// Connect to the database
+$host = 'localhost';
+$user = 'root';
+$pass = 'oakland';
+$db   = 'pawpatch';
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+// Define the email address you want to retrieve pets for
+$email = $_SESSION['email'];
+
+// Execute the query
+$sql = "SELECT diet.DietID, diet.Type, diet.Portion, diet.Frequency, pet.PetID, pet.Name AS PetName 
+        FROM diet 
+        INNER JOIN pet ON diet.PetID = pet.PetID 
+        INNER JOIN user ON pet.email = user.email 
+        WHERE user.email = '$email'";
+$result = mysqli_query($conn, $sql);
+
+// Check if the query returned any results
+if (mysqli_num_rows($result) > 0) {
+  // Output the results as a Bootstrap card for each pet
+  while ($row = mysqli_fetch_assoc($result)) {
+    echo "<div class='card'>";
+    echo "<div class='card-header'>Diet for " . $row['PetName'] . "</div>";
+    echo "<div class='card-body'>";
+    echo "<table class='table'>";
+    echo "<thead><th>Type</th><th>Portion</th><th>Frequency</th></tr></thead>";
+    echo "<tbody>";
+    echo "</td><td>".$row['Type']."</td><td>".$row['Portion']."</td><td>".$row['Frequency']."</td></tr>";
+    echo "</tbody>";
+    echo "</table>";
+    echo "</div>";
+    echo "</div>";
+  }
+} else {
+  // If the query returned no results, output an error message
+  echo "No results found.";
+}
+
+// Close the database connection
+mysqli_close($conn);
+?>   
+
+
+
           </div>
         </div>
       </div>

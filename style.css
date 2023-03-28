@@ -104,11 +104,11 @@
 
 /* Vaccination Page */
 #vacc-desc {
-    border: 5px solid;
+    border: 3px solid;
     margin: auto;
     padding: 20px;
-    color:#60bae2;
-    background-color: #E3F2FD;
+    color:black;
+    background-color: #B6E2D3;
     text-align: left;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-right: 10px;
@@ -183,11 +183,11 @@
 }
 
 #med-desc {
-    border: 5px solid;
+    border: 3px solid;
     margin: auto;
     padding: 20px;
-    color:#60bae2;
-    background-color: #E3F2FD;
+    color:black;
+    background-color: #B6E2D3;
     text-align: left;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-right: 10px;
@@ -274,11 +274,11 @@
 }
 
 #diet-desc {
-    border: 5px solid;
+    border: 3px solid;
     margin: auto;
     padding: 20px;
-    color:#60bae2;
-    background-color: #E3F2FD;
+    color:black;
+    background-color: #B6E2D3;
     text-align: left;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-right: 10px;

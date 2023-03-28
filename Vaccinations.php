@@ -1,3 +1,7 @@
+<?php
+    session_start();
+  ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,9 +14,7 @@
   <body class>
     <h1><img src="images/Logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">Paw Patch</h1>
     
-    <?php
-    session_start();
-  ?>
+
 
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
@@ -29,7 +31,7 @@
           <a class="nav-link  " href="About.php">About Us</a>
         </li>
         <?php
-        session_start();
+     
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,37 +67,89 @@
         </div>
       </div>
       <br>
-      <div class="our-desc">
-        <h2>Rockys's Vaccination Record:</h2>
-      </div>
+      
 
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm sidebar">
-            <a class="nav-link activated" href="Vaccinations.html">Vaccines</a>
-            <a class="nav-link" href="Meds.html">Medications</a>
-            <a class="nav-link" href="Pets.html">Pets</a>
-            <a class="nav-link" href="Diet.html">Diet</a>
-            <a class="nav-link" href="Account.html">Account</a>
-        </div>
+            <div class="col-sm sidebar">
+            <a class="nav-link side-bar activated" href="Account.php">Account</a>
+            <hr>
+            <a class="nav-link side-bar" href="Pets.php">Pets</a>
+            <hr>
+                <a class="nav-link side-bar" href="Vaccinations.php">Vaccines</a>
+            <hr>
+                <a class="nav-link side-bar" href="Meds.php">Medications</a>
+            <hr>
+                <a class="nav-link side-bar" href="Diet.php">Diet</a>
+            <hr>
+                <a class="nav-link side-bar" href="Diet.php">Schedules</a>
+            </div>
           <div class="col-xl-10 col-lg-10 col-md-10" id="vacc-desc">
-            <h2 style="color:black">Vaccination 1</h2>
-            <p class="vaccine-info">Vaccine details...</p>
-            <button type="submit" class="vacc-add btn btn-primary" style="margin-left: auto">Edit Vaccine</button>
+            <h2 style="color:black">Vaccination Cards for My Pets </h2>
+            <br>
+            <?php 
+// Connect to the database
+$host = 'localhost';
+$user = 'root';
+$pass = 'oakland';
+$db   = 'pawpatch';
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+// Define the email address you want to retrieve pets for
+$email = $_SESSION['email'];
+
+// Execute the query
+$sql = "SELECT vaccine.VacName, vaccine.VacDate, pet.PetID, pet.Name AS PetName
+        FROM vaccine 
+        INNER JOIN pet ON vaccine.PetID = pet.PetID 
+        INNER JOIN user ON pet.email = user.email 
+        WHERE user.email = '$email'
+        ORDER BY pet.PetID";
+$result = mysqli_query($conn, $sql);
+
+// Check if the query returned any results
+if (mysqli_num_rows($result) > 0) {
+  $previousPetID = null; // Initialize the previous PetID to null
+  while ($row = mysqli_fetch_assoc($result)) {
+    $currentPetID = $row['PetID'];
+    if ($currentPetID != $previousPetID) {
+      // Close the previous card (if it exists)
+      if ($previousPetID != null) {
+        echo "</tbody></table></div></div>";
+      }
+      // Open a new card for the current pet
+      echo "<div class='card'>";
+      echo "<div class='card-header'>Vaccines for ".$row['PetName']."</div>";
+      echo "<div class='card-body'>";
+      echo "<table class='table'>";
+      echo "<thead><th>Vaccine Name</th><th>Vaccine Date</th></tr></thead>";
+      echo "<tbody>";
+      $previousPetID = $currentPetID; // Set the previous PetID to the current PetID
+    }
+    // Output the current vaccine for the current pet
+    echo "<tr><td>".$row['VacName']."</td><td>".$row['VacDate']."</td></tr>";
+  }
+  // Close the final card
+  echo "</tbody></table></div></div>";
+} else {
+  // If the query returned no results, output an error message
+  echo "No results found.";
+}
+
+// Close the database connection
+mysqli_close($conn);
+
+?>
           </div>
         </div>
       </div>
       <br>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm sidebar" style="background-color:white"></div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="vacc-desc">
-            <h2 style="color:black">Vaccination 2</h2>
-            <p class="vaccine-info">Vaccine details...</p>
-            <button type="submit" class="vacc-add btn btn-primary" style="margin-left: auto">Edit Vaccine</button>
-          </div>
-        </div>
-      </div>
+     
       <br>
       <div class="container-fluid">
         <div class="row">
