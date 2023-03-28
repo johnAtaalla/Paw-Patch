@@ -86,6 +86,12 @@ mysqli_close($conn);
     <?php
     
   ?>
+<style>
+  form {
+    background-color: white;
+    padding: 30px;
+}
+</style>
 
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
@@ -139,7 +145,7 @@ mysqli_close($conn);
       </div>
       <br>
 
-      <div class="container-fluid">
+      <div class="container-fluid" >
         <div class="row">
             <div class="col-sm sidebar" style="height:450px;">
             <a class="nav-link side-bar " href="Account.php">Account</a>
@@ -163,7 +169,7 @@ mysqli_close($conn);
 <?php
 foreach ($petInfo as $pet) {
   echo '<div class="card" style="font-size:20px;">
-          <div class="card-body">
+          <div class="card-body"">
             <h5 class="card-title">' . $pet['Name'] . '</h5>
             <h6 class="card-subtitle mb-2 text-muted">Species: ' . $pet['Species'] . '</h6>
             <p class="card-text">Breed: ' . $pet['Breed'] . '</p>
@@ -176,7 +182,16 @@ foreach ($petInfo as $pet) {
         
         <button type="button" class="pet-add btn btn-primary" style="margin-left: auto">Edit Pet Info</button>
 
-        <div class="form-container" style="display: none;">
+        <div class="form-container" style="display: none; 
+        overflow: hidden;
+        align: center;
+        height: 800px; 
+        width: 100%; 
+        text-align:justify;
+        box-sizing: border-box;
+        padding: 2rem;
+        grid-template-columns: 1fr 1fr;">
+
         <form method="POST" action="update_pet.php">
         <span class = " d-block label label-default">Name</span>
             <input type="text" name="Name" value="' . $pet['Name'] . '">
@@ -193,12 +208,11 @@ foreach ($petInfo as $pet) {
             <span class = " d-block label label-default">General Info</span>
             <input type="text" name="General" value="' . $pet['General'] . '">
             <input type="hidden"  name="PetID" value="' . $pet['PetID'] . '">
-            <input type="submit" name="update" value="Update">
+            <input type="submit" button type="button" class="submit btn btn-primary" name="update" value="Update">
           </form>
         </div>';
 }
 ?>
-
 
 <script>
   var editButtons = document.querySelectorAll('.pet-add');
@@ -211,7 +225,16 @@ foreach ($petInfo as $pet) {
   });
 </script>
 
-<div class="form-container" id="pet-form" style="display: none;">
+<div class="form-container" id="pet-form" 
+style="display: none; 
+    overflow: hidden;
+    align: center;
+    height: 900px; 
+    width: 100%; 
+    text-align:justify;
+    box-sizing: border-box;
+    padding: 2rem;
+    grid-template-columns: 1fr 1fr;">
 <form action="AddPet.php" method="post">
 
 <div class="mb-3">
@@ -220,7 +243,7 @@ foreach ($petInfo as $pet) {
 </div>
 <div class="mb-3">
 <label for="Species" class="form-label">Species</label>
-            <input type="text" class="form-control" id="Species" name="Species" value="">
+            <input type="text" class="form-control" id="Species" name="Species" value=" ">
             </div>
 
             <div class="mb-3"> 
@@ -244,7 +267,7 @@ foreach ($petInfo as $pet) {
             <input type="text"class="form-control" id="General"name="General" value=" ">
             </div>
          
-            <input type="submit" class="submit btn btn-primary" name="submit" value="Add Pet">
+            <input type="submit" button type="button" class="submit btn btn-primary" name="submit" value="Add Pet">
 
           </form>
 </div>
@@ -279,7 +302,8 @@ function toggleForm() {
 </script>
 
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
+
+
 </html>

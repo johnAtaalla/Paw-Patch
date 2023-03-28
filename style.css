@@ -90,14 +90,14 @@
 .submit{
     background-color:white;
     transition-duration:.4s;
-    border-color: #EAA78A;
+    border-color: black;
     color:black;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .submit:hover{
-    background-color: #EAA78A;
-    border-color: #EAA78A;
+    background-color: #E4DACF ;
+    border-color: black;
     color: white;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -162,7 +162,25 @@
     text-align: left;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-right: 10px;
+    
+}.pet-create {
+    padding: 5px;
+    margin: auto;
+    margin-left: 10px;
+    background-color: white;
+    border-color:black ;
+    color: black;
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
 }
+.pet-create:hover {
+    background-color:#E4DACF ;
+    transition-duration: .4s;
+    border-color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+   
 
 /* Medications Page */
 .med-add {
@@ -342,4 +360,25 @@
 .mint{
     background-color: #B6E2D3;
 }
+
+/* add pet form */
+
+input[type=text]{
+    border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 0 0 10px 0;
+    display: block;
+    box-sizing: border-box;
+}
+
 
