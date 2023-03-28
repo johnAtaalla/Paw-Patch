@@ -10,9 +10,6 @@
   <body>
     <h1><img src="images/Logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">Paw Patch</h1>
 
-     <?php
-    session_start();
-  ?>
 
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
