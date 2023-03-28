@@ -114,7 +114,7 @@ mysqli_close($conn);
       <br>
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar">
+            <div class="col-sm sidebar" style="height:450px;">
             <a class="nav-link side-bar activated" href="Account.php">Account</a>
             <hr>
             <a class="nav-link side-bar" href="Pets.php">Pets</a>
@@ -125,7 +125,7 @@ mysqli_close($conn);
             <hr>
                 <a class="nav-link side-bar" href="Diet.php">Diet</a>
             <hr>
-                <a class="nav-link side-bar" href="Diet.php">Schedules</a>
+                <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
           <div class="col-xl-10 col-lg-10 col-md-10" id="profile-desc">
             <h2 style="color:black">Personal Info</h2>

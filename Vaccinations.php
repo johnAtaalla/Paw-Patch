@@ -152,10 +152,10 @@ mysqli_close($conn);
      
       <br>
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm sidebar" style="background-color:white"></div>
+        <div class="row" style="margin-top:10px;">
+          <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
           <div class="col-xl-10 col-lg-10 col-md-10">
-          <button type="submit" class="vacc-add btn btn-primary">Add Vaccine</button></div>
+          <button type="submit" class="pet-create btn btn-primary">Add Vaccine</button></div>
         </div>
       </div>
 

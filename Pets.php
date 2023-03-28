@@ -141,7 +141,7 @@ mysqli_close($conn);
 
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar">
+            <div class="col-sm sidebar" style="height:450px;">
             <a class="nav-link side-bar " href="Account.php">Account</a>
             <hr>
             <a class="nav-link side-bar activated" href="Pets.php">Pets</a>
@@ -152,7 +152,7 @@ mysqli_close($conn);
             <hr>
                 <a class="nav-link side-bar" href="Diet.php">Diet</a>
             <hr>
-                <a class="nav-link side-bar" href="Diet.php">Schedules</a>
+                <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
           <div class="col-xl-10 col-lg-10 col-md-10" id="pet-desc">
             <h2 style="color:black">    </h2>
@@ -162,7 +162,7 @@ mysqli_close($conn);
 
 <?php
 foreach ($petInfo as $pet) {
-  echo '<div class="card">
+  echo '<div class="card" style="font-size:20px;">
           <div class="card-body">
             <h5 class="card-title">' . $pet['Name'] . '</h5>
             <h6 class="card-subtitle mb-2 text-muted">Species: ' . $pet['Species'] . '</h6>
@@ -259,7 +259,7 @@ foreach ($petInfo as $pet) {
 
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm sidebar" style="background-color:white"></div>
+          <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
           <div class="col-xl-10 col-lg-10 col-md-10">
   <button type="submit" class="pet-create btn btn-primary" onclick="toggleForm()">Add Pet</button>
 

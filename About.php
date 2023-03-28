@@ -23,10 +23,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active navtext" href="index.php">Home</a>
+          <a class="nav-link navtext" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link navtext " href="About.php">About Us</a>
+          <a class="nav-link active navtext " href="About.php">About Us</a>
         </li>
         <?php
         session_start();
