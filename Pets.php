@@ -27,7 +27,7 @@ if (!$conn) {
 
 // Get pets' information for the logged-in user
 $email = mysqli_real_escape_string($conn, $_SESSION['email']);
-$sql = "SELECT PetID, Name, Breed, Species, Health_Problems, Age, Gender, General FROM pet WHERE email = '$email'";
+$sql = "SELECT PetID, Name, Breed, Species, Health_Problems, Age, Gender, General, img_name, img_dir FROM pet WHERE email = '$email'";
 $result = mysqli_query($conn, $sql);
 
 $petInfo = array(); // Array to store pets' information
@@ -43,7 +43,10 @@ if (mysqli_num_rows($result) > 0) {
       'Health_Problems' => $row['Health_Problems'],
       'Age' => $row['Age'],
       'Gender' => $row['Gender'],
-      'General' => $row['General']
+      'General' => $row['General'],
+      'imageName' => $row['img_name'],
+      'imageDir' => $row['img_dir']
+
     );
     // Add pet's information to the array
     array_push($petInfo, $pet);
@@ -58,7 +61,10 @@ if (mysqli_num_rows($result) > 0) {
     'Health_Problems' => 'Unknown',
     'Age' => 'Unknown',
     'Gender' => 'Unknown',
-    'General' => 'Unknown'
+    'General' => 'Unknown',
+    'imageName' => 'Unknown',
+    'imageDir' => 'petPhotos/placeholder.jpg'
+
   );
   // Add pet's information to the array
   array_push($petInfo, $pet);
@@ -170,8 +176,13 @@ mysqli_close($conn);
 foreach ($petInfo as $pet) {
   echo '<div class="card" style="font-size:20px;">
           <div class="card-body"">
-            <h5 class="card-title">' . $pet['Name'] . '</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Species: ' . $pet['Species'] . '</h6>
+            <h5 class="card-text" style="font-size = 20pt">' . $pet['Name'] . '</h5>
+            <br>
+            <div class="col-xl-2 col-lg-2 col-md-2">
+            <img src="' . $pet['imageDir'] . '" alt="dog picture" class="img-fluid">
+            </div>
+            <br>
+            <h6 class="card-text mb-2">Species: ' . $pet['Species'] . '</h6>
             <p class="card-text">Breed: ' . $pet['Breed'] . '</p>
             <p class="card-text">Age: ' . $pet['Age'] . '</p>
             <p class="card-text">Gender: ' . $pet['Gender'] . '</p>
@@ -235,7 +246,7 @@ style="display: none;
     box-sizing: border-box;
     padding: 2rem;
     grid-template-columns: 1fr 1fr;">
-<form action="AddPet.php" method="post">
+<form action="AddPet.php" method="post" enctype="multipart/form-data">
 
 <div class="mb-3">
 <label for="Name" class="form-label">Pet Name</label>
@@ -266,6 +277,11 @@ style="display: none;
             <label for="General" class="form-label">General</label> 
             <input type="text"class="form-control" id="General"name="General" value=" ">
             </div>
+            <div class="mb-3">
+            <label for="ImageUpload" class="form-label">Image Updload</label> 
+            <input type="file" name="userfile[]" value="" multiple="">
+            </div>
+            
          
             <input type="submit" button type="button" class="submit btn btn-primary" name="submit" value="Add Pet">
 
