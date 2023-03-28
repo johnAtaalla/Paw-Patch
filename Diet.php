@@ -74,7 +74,7 @@ session_start();
      
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar">
+            <div class="col-sm sidebar" style="height = 450px;">
             <a class="nav-link side-bar activated" href="Account.php">Account</a>
             <hr>
             <a class="nav-link side-bar" href="Pets.php">Pets</a>
