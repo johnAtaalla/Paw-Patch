@@ -1,3 +1,11 @@
+<?php
+    session_start();
+  ?>
+
+
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,10 +17,6 @@
   </head>
   <body class>
     <h1><img src="images/Logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">Paw Patch</h1>
-    
-    <?php
-    session_start();
-  ?>
 
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
@@ -29,7 +33,7 @@
           <a class="nav-link  " href="About.php">About Us</a>
         </li>
         <?php
-        session_start();
+       
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,43 +68,92 @@
           <h2 class="our-desc">Medications</h2> 
         </div>
       </div>
-      <br>
-      <div class="our-desc">
-        <h2>Rockys's Medications:</h2>
-      </div>
-      <br>
-      <div class="container-fluid">
+     <br>
+     <div class="container-fluid">
         <div class="row">
             <div class="col-sm sidebar">
-                <a class="nav-link" href="Vaccinations.html">Vaccines</a>
-                <a class="nav-link activated" href="Meds.html">Medications</a>
-                <a class="nav-link" href="Pets.html">Pets</a>
-                <a class="nav-link" href="Diet.html">Diet</a>
-                <a class="nav-link" href="Account.html">Account</a>
+            <a class="nav-link side-bar activated" href="Account.php">Account</a>
+            <hr>
+            <a class="nav-link side-bar" href="Pets.php">Pets</a>
+            <hr>
+                <a class="nav-link side-bar" href="Vaccinations.php">Vaccines</a>
+            <hr>
+                <a class="nav-link side-bar" href="Meds.php">Medications</a>
+            <hr>
+                <a class="nav-link side-bar" href="Diet.php">Diet</a>
+            <hr>
+                <a class="nav-link side-bar" href="Diet.php">Schedules</a>
             </div>
           <div class="col-xl-10 col-lg-10 col-md-10" id="med-desc">
-            <h2 style="color:black">[Medication Name]</h2>
-            <p class="med-info">Purpose</p>
-            <p class="med-info">Dose/Frequency</p>
-            <p class="med-info">Start/End Date</p>
-            <button type="submit" class="med-add btn btn-primary" style="margin-left: auto">Edit Medication</button>
+            <h2 style="color:black">Medication Cards for My Pets</h2>
+            <br>
+            <?php 
+// Connect to the database
+$host = 'localhost';
+$user = 'root';
+$pass = 'oakland';
+$db   = 'pawpatch';
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+// Define the email address you want to retrieve pets and medications for
+$email = $_SESSION['email'];
+
+// Execute the query to retrieve the pets and their medications
+$sql = "SELECT med.MedID, med.MedName, med.MedStart, med.MedStop, med.MedDose, pet.PetID, pet.Name AS PetName
+        FROM med 
+        INNER JOIN pet ON med.PetID = pet.PetID 
+        INNER JOIN user ON pet.email = user.email 
+        WHERE user.email = '$email'";
+
+$result = mysqli_query($conn, $sql);
+
+// Check if the query returned any results
+if (mysqli_num_rows($result) > 0) {
+  // Output a Bootstrap card for each pet, with their medications displayed in a table
+  while ($row = mysqli_fetch_assoc($result)) {
+    // If this is the first medication for this pet, output the card header and start the table
+    if (!isset($currentPetID) || $currentPetID != $row['PetID']) {
+      // If this isn't the first pet, close the previous card
+      if (isset($currentPetID)) {
+        echo "</tbody></table></div></div>";
+      }
+      
+      // Start the new card
+      echo "<div class='card'>";
+      echo "<div class='card-header'>" . $row['PetName'] . "</div>";
+      echo "<div class='card-body'>";
+      echo "<table class='table'>";
+      echo "<thead><tr><th>Medication Name</th><th>Start Date</th><th>Stop Date</th><th>Dose</th></tr></thead>";
+      echo "<tbody>";
+      
+      // Update the current pet ID
+      $currentPetID = $row['PetID'];
+    }
+    
+    // Output the medication row for this pet
+    echo "<tr><td>" . $row['MedName'] . "</td><td>" . $row['MedStart'] . "</td><td>" . $row['MedStop'] . "</td><td>" . $row['MedDose'] . "</td></tr>";
+  }
+  
+  // Close the last card
+  echo "</tbody></table></div></div>";
+} else {
+  // If the query returned no results, output an error message
+  echo "No results found.";
+}
+
+// Close the database connection
+mysqli_close($conn);
+?>
           </div>
         </div>
       </div>
       <br>
-      <div class="container-fluid">
-        <div class="row">
-                <div class="col-sm sidebar" style="background-color:white"></div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="med-desc">
-            <h2 style="color:black">[Medication Name]</h2>
-            <p class="med-info">Purpose</p>
-            <p class="med-info">Dose/Frequency</p>
-            <p class="med-info">Start/End Date</p>
-            <button type="submit" class="med-add btn btn-primary" style="margin-left: auto">Edit Medication</button>
-          </div>
-        </div>
-      </div>
-      <br>
+    
       <div class="container-fluid">
         <div class="row">
                 <div class="col-sm sidebar" style="background-color:white"></div>

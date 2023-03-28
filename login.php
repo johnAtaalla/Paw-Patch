@@ -28,7 +28,7 @@
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
         <?php
-        session_start();
+        
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,7 +67,7 @@
       
 
       <?php
-  session_start();
+ 
   if(isset($_SESSION['error'])) {
     echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';
     unset($_SESSION['error']);

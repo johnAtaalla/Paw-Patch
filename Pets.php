@@ -102,7 +102,7 @@ mysqli_close($conn);
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
         <?php
-        session_start();
+      
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
