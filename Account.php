@@ -1,18 +1,19 @@
 
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 
-// Start the session
 session_start();
 
-// Check if user is logged in
 if (!isset($_SESSION['loggedin'])) {
-  // Redirect to login page if user is not logged in
+
   header('Location: login.html');
   exit;
 }
 
-// Connect to the database
+
 $servername = "localhost";
 $username = "root";
 $password = "oakland";
@@ -20,14 +21,14 @@ $dbname = "pawpatch";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-// Check connection
+
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-// Get user's name from the database
+
 $email = mysqli_real_escape_string($conn, $_SESSION['email']);
-$sql = "SELECT firstname, lastname, email, phone, address FROM user WHERE email = '$email'";
+$sql = "SELECT firstname, lastname, email, phone, address, role, degree, yearsP, cert FROM user WHERE email = '$email'";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -37,12 +38,19 @@ if (mysqli_num_rows($result) > 0) {
   $email = $row['email']; 
   $phone = $row['phone'];
   $address = $row['address'];
+  $role = $row['role'];
+  $degree = $row['degree'];
+  $yearsP = $row['yearsP'];
+  $cert = $row['cert'];
 } else {
   $fname = "Unknown";
   $lastname ="Uknown";
   $email = "Uknown";
   $phone = "Uknown";
   $address = "Uknown";
+  $degree = "Uknown";
+  $yearsP = "Uknown";
+  $cert = "Uknown"; 
 }
 
 mysqli_close($conn);
@@ -69,14 +77,17 @@ mysqli_close($conn);
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active navtext" href="index.php">Home</a>
+          <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link navtext " href="index.php">What We Offer</a>
+        </li>
         <?php
      
-        if(isset($_SESSION['email'])) { // If user is logged in, show all links
+        if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dashboard
@@ -89,10 +100,13 @@ mysqli_close($conn);
                     <li><a class="dropdown-item navtext" href="Diet.php">Diet</a></li>
                     <li><a class="dropdown-item navtext" href="Schedule.php">Schedule</a></li>
                     <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item navtext" href="Vet.php">Vet Contact</a></li>
+                    <li><a class="dropdown-item navtext" href="Aid.php">Pet Aid Contact</a></li>
+                    <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
                 </li>';
-        } else { // If user is not logged in, show only Create Account link
+        } else { 
           echo '<li class="nav-item ">
                   <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
                 </li>
@@ -114,8 +128,10 @@ mysqli_close($conn);
       <br>
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height:450px;">
-            <a class="nav-link side-bar activated" href="Account.php">Account</a>
+            <div class="col-sm sidebar" style="height:515px;">
+            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
+            <hr>
+            <a class="nav-link side-bar" href="Account.php">Account</a>
             <hr>
             <a class="nav-link side-bar" href="Pets.php">Pets</a>
             <hr>
@@ -131,35 +147,55 @@ mysqli_close($conn);
             <h2 style="color:black">Personal Info</h2>
             
             <?php
-if(isset($_POST['edit'])){ // if the edit button was clicked, show the form
+if(isset($_POST['edit'])){ 
   ?>
-  <!-- display the form -->
+ 
   <form method="post" action="updateAccount.php">
-    <!-- input fields -->
-    <span class = " d-block label label-default">First Name</span>
-    <input  type="text" name="firstname" value="<?php echo $fname; ?>">
-    <span class = " d-block label label-default">Last Name</span>
+   
+    <span class="d-block label label-default">First Name</span>
+    <input type="text" name="firstname" value="<?php echo $fname; ?>">
+    <span class="d-block label label-default">Last Name</span>
     <input type="text" name="lastname" value="<?php echo $lname; ?>">
-    <span class = " d-block label label-default">Email</span>
+    <span class="d-block label label-default">Email</span>
     <input type="text" name="email" value="<?php echo $email; ?>">
-    <span class = " d-block label label-default">Phone</span>
+    <span class="d-block label label-default">Phone</span>
     <input type="text" name="phone" value="<?php echo $phone; ?>">
-    <span class = "d-block label label-default">Address</span>
+    <span class="d-block label label-default">Address</span>
     <input type="text" name="address" value="<?php echo $address; ?>">
+    <?php if ($role == "Vet" || $role == "Aid") { ?>
+      <?php if ($role == "Vet") { ?>
+        <span class="d-block label label-default">Degree</span>
+        <input type="text" name="degree" value="<?php echo $degree; ?>">
+      <?php } ?>
+      <?php if ($role == "Aid") { ?>
+        <span class="d-block label label-default">Certification</span>
+        <input type="text" name="cert" value="<?php echo $cert; ?>">
+      <?php } ?>
+      <span class="d-block label label-default">Years of Experience</span>
+      <input type="text" name="yearsP" value="<?php echo $yearsP; ?>">
+    <?php } ?>
     <div class=".d-print-block">
-    <input type="submit" name="update" value="Update">
-</div>
+      <input type="submit" name="update" value="Update">
+    </div>
   </form>
   <?php
-} else { // if the edit button was not clicked, show only the user's info
+} else { 
   ?>
-  <!-- display the user's info -->
-  
-  <p><strong>First Name:</strong> <?php echo $fname; ?></p>
-  <p><strong>Last Name:</strong> <?php echo $lname; ?></p>
-  <p><strong>Email:</strong> <?php echo $email; ?></p>
-  <p><strong>Phone:</strong> <?php echo $phone; ?></p>
-  <p><strong>Address:</strong> <?php echo $address; ?></p>
+
+  <p class="acc-font">First Name: <?php echo $fname; ?></p>
+  <p class="acc-font">Last Name: <?php echo $lname; ?></p>
+  <p class="acc-font">Email: <?php echo $email; ?></p>
+  <p class="acc-font">Phone: <?php echo $phone; ?></p>
+  <p class="acc-font">Address: <?php echo $address; ?></p>
+  <?php if ($role == "Vet" || $role == "Aid") { ?>
+    <?php if ($role == "Vet") { ?>
+      <p class="acc-font">Degree: <?php echo $degree; ?></p>
+    <?php } ?>
+    <?php if ($role == "Aid") { ?>
+      <p class="acc-font">Certification: <?php echo $cert; ?></p>
+    <?php } ?>
+    <p class="acc-font">Years of Experience: <?php echo $yearsP; ?></p>
+  <?php } ?>
   <form method="post" action="">
     <input type="submit" name="edit" value="Edit">
   </form>

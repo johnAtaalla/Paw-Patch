@@ -23,14 +23,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active navtext" href="index.php">Home</a>
+          <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link navtext " href="index.php">What We Offer</a>
+        </li>
         <?php
-      
-        if(isset($_SESSION['email'])) { // If user is logged in, show all links
+     
+        if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dashboard
@@ -43,10 +46,13 @@
                     <li><a class="dropdown-item navtext" href="Diet.php">Diet</a></li>
                     <li><a class="dropdown-item navtext" href="Schedule.php">Schedule</a></li>
                     <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item navtext" href="Vet.php">Vet Contact</a></li>
+                    <li><a class="dropdown-item navtext" href="Aid.php">Pet Aid Contact</a></li>
+                    <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
                 </li>';
-        } else { // If user is not logged in, show only Create Account link
+        } else { 
           echo '<li class="nav-item ">
                   <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
                 </li>
@@ -59,6 +65,7 @@
     </div>
   </div>
 </nav>
+
 
 
 <div class="welcome-to">
@@ -77,7 +84,7 @@
             <br>
             <div class="main1 info-block">
             <h2 class="homepage-header">Medication Tracking & Reminders</h2>
-            <p>With Paw Patch, pet owners can track the medications that their pets are taking including the name, dose, and frequency. This information can be used to set up reminders so you never forget to give your pet their medicine!</p>
+            <p class="desc-font">With Paw Patch, pet owners can track the medications that their pets are taking including the name, dose, and frequency. This information can be used to set up reminders so you never forget to give your pet their medicine!</p>
             </div>
           </div>
           <div class="col">
@@ -87,7 +94,7 @@
             <br>
             <div class="main1 info-block">
             <h2 class="homepage-header">Health & Vaccination Records</h2>
-            <p>Keep all your pet's health history and vaccination information in one place! Paw Patch will assist you to make sure you have easy access to your pets health history and vaccination information for the best up-to-date care.</p>
+            <p class="desc-font">Keep all your pet's health history and vaccination information in one place! Paw Patch will assist you to make sure you have easy access to your pets health history and vaccination information for the best up-to-date care.</p>
           </div>
           </div>
           <div class="col">
@@ -97,7 +104,7 @@
             <br>
             <div class="main1 info-block">
             <h2 class="homepage-header">Veterinarian Contact</h2>
-            <p>Stay in contact with your veterinarian and allow them access to view your pet's health information for the most accurate and in-depth care they can offer.</p>
+            <p class="desc-font">Stay in contact with your veterinarian and allow them access to view your pet's health information for the most accurate and in-depth care they can offer.</p>
             </div>
           </div>
           <div class="col">
@@ -107,7 +114,7 @@
             <br>
             <div class="main1 info-block">
             <h2 class="homepage-header">Pet Aids</h2>
-            <p>Find a trustworthy pet sitter that is willing and able to take care of a pet that has additional needs such as medication requirements or specialized care. Rest easy knowing your pet is in the best of hands.</p>
+            <p class="desc-font">Find a trustworthy pet sitter that is willing and able to take care of a pet that has additional needs such as medication requirements or specialized care. Rest easy knowing your pet is in the best of hands.</p>
             </div>
           </div>
         </div>
