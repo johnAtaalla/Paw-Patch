@@ -1,6 +1,8 @@
 <?php
-session_start();
-?>
+    session_start();
+  ?>
+
+
 
 
 
@@ -15,9 +17,6 @@ session_start();
   </head>
   <body class>
     <h1><img src="images/Logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">Paw Patch</h1>
-
-    
-
 
     <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
@@ -73,16 +72,16 @@ session_start();
 
       <div class="header">
         <div>
-          <h2 class="our-desc">Diet</h2> 
+          <h2 class="our-desc">Veterinarian Contacts</h2> 
         </div>
       </div>
-      <br>
-    
-     
-      <div class="container-fluid">
+     <br>
+     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height = 450px;">
-            <a class="nav-link side-bar activated" href="Account.php">Account</a>
+            <div class="col-sm sidebar" style="height:515px;">
+            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
+            <hr>
+            <a class="nav-link side-bar" href="Account.php">Account</a>
             <hr>
             <a class="nav-link side-bar" href="Pets.php">Pets</a>
             <hr>
@@ -92,12 +91,11 @@ session_start();
             <hr>
                 <a class="nav-link side-bar" href="Diet.php">Diet</a>
             <hr>
-                <a class="nav-link side-bar" href="Diet.php">Schedules</a>
+                <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="diet-desc">
-            <h2 style="color:black">Diet Information</h2>
+          <div class="col-xl-10 col-lg-10 col-md-10" id="med-desc">
+            <h2 style="color:black">Reach Out and Contact Our Trusted Vets!</h2>
             <br>
-            
             <?php 
 // Connect to the database
 $host = 'localhost';
@@ -110,54 +108,57 @@ $conn = mysqli_connect($host, $user, $pass, $db);
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
+// SQL query to select users with role Vet
+$sql = "SELECT firstname, lastname, email, phone, address, degree, yearsP FROM user WHERE role = 'Vet'";
 
-// Define the email address you want to retrieve pets for
-$email = $_SESSION['email'];
+$result = $conn->query($sql);
 
-// Execute the query
-$sql = "SELECT diet.DietID, diet.Type, diet.Portion, diet.Frequency, pet.PetID, pet.Name AS PetName 
-        FROM diet 
-        INNER JOIN pet ON diet.PetID = pet.PetID 
-        INNER JOIN user ON pet.email = user.email 
-        WHERE user.email = '$email'";
-$result = mysqli_query($conn, $sql);
+?>
 
-// Check if the query returned any results
-if (mysqli_num_rows($result) > 0) {
-  // Output the results as a Bootstrap card for each pet
-  while ($row = mysqli_fetch_assoc($result)) {
-    echo "<div class='card'>";
-    echo "<div class='card-header pet-name'>Diet for " . $row['PetName'] . "</div>";
-    echo "<div class='card-body desc-font'>";
-    echo "<table class='table'>";
-    echo "<thead><th>Type</th><th>Portion</th><th>Frequency</th></tr></thead>";
-    echo "<tbody>";
-    echo "</td><td>".$row['Type']."</td><td>".$row['Portion']."</td><td>".$row['Frequency']."</td></tr>";
-    echo "</tbody>";
-    echo "</table>";
-    echo "</div>";
-    echo "</div>";
-  }
-} else {
-  // If the query returned no results, output an error message
-  echo "No results found.";
-}
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th class="desc-font">Name</th>
+              <th class="desc-font">Email</th>
+              <th class="desc-font">Phone</th>
+              <th class="desc-font">Address</th>
+              <th class="desc-font">Degree</th>
+              <th class="desc-font">Years of Practice</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php while($row = $result->fetch_assoc()) { ?>
+              <tr>
+                <td class="desc-font"><?php echo $row["firstname"] . " " . $row["lastname"]; ?></td>
+                <td class="desc-font"><?php echo $row["email"]; ?></td>
+                <td class="desc-font"><?php echo $row["phone"]; ?></td>
+                <td class="desc-font"><?php echo $row["address"]; ?></td>
+                <td class="desc-font"><?php echo $row["degree"]; ?></td>
+                <td class="desc-font"><?php echo $row["yearsP"]; ?></td>
+              </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+<?php
 // Close the database connection
 mysqli_close($conn);
-?>   
-
-
-
+?>
           </div>
         </div>
       </div>
       <br>
-      <div class="container-fluid">
-        <div class="row">
-                <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
-          <div class="col-xl-10 col-lg-10 col-md-10">
-      <button type="submit" class="pet-add btn btn-primary">Add Diet Info</button>
+    
+     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>

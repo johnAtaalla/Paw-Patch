@@ -43,6 +43,7 @@ if (isset($_POST['submit'])) {
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $role = $_POST['role'];
 
     // Check if email already exists
     if (emailExists($email)) {
@@ -54,8 +55,8 @@ if (isset($_POST['submit'])) {
     } else {
         // Insert new user into database
         $conn = OpenCon();
-        $stmt = $conn->prepare("INSERT INTO user (firstname, lastname, email, password) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $firstname, $lastname, $email, $password);
+        $stmt = $conn->prepare("INSERT INTO user (firstname, lastname, email, password, role) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $firstname, $lastname, $email, $password, $role);
         $stmt->execute();
         CloseCon($conn);
         header('Location: login.php');

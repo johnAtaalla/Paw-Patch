@@ -61,7 +61,7 @@
 
 .our-desc{
     color: black;
-    font-size: 40px;
+    font-size: 40pt;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
 }
@@ -381,4 +381,18 @@ input[type=text]{
     box-sizing: border-box;
 }
 
+.desc-font{
+    font-size: 14pt;
+}
 
+.helper-font{
+    font-size: 12pt;
+}
+
+.acc-font{
+    font-size: 22pt;
+}
+
+.pet-name{
+    font-size: 20pt;
+}

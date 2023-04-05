@@ -36,13 +36,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active navtext" href="index.php">Home</a>
+          <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link navtext " href="index.php">What We Offer</a>
+        </li>
         <?php
-        session_start();
+     
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,6 +58,9 @@
                     <li><a class="dropdown-item navtext" href="Vaccinations.php">Vacinations</a></li>
                     <li><a class="dropdown-item navtext" href="Diet.php">Diet</a></li>
                     <li><a class="dropdown-item navtext" href="Schedule.php">Schedule</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item navtext" href="Vet.php">Vet Contact</a></li>
+                    <li><a class="dropdown-item navtext" href="Aid.php">Pet Aid Contact</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
@@ -72,6 +78,7 @@
     </div>
   </div>
 </nav>
+
 
 
       <div class="container">
@@ -94,27 +101,44 @@
       <form action="register.php" onsubmit="return checkPasswords();" method="post">
     
         <div class="mb-3">
-          <label for="firstname" class="form-label">First Name</label>
+          <label for="firstname" class="form-label desc-font">First Name:</label>
           <input  class="form-control" id="firstname" name="firstname" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
-          <label for="lastName" class="form-label">Last Name</label>
+          <label for="lastName" class="form-label desc-font">Last Name:</label>
           <input  class="form-control" id="lastName" name="lastname" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
+          <label for="email" class="form-label desc-font">Email:</label>
           <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
-          <div id="emailHelp" class="form-text">Please enter your email</div>
+          <div id="emailHelp" class="form-text helper-text">Please enter your email</div>
           <div id="emailFeedback" class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
-          <label for="password" class="form-label">New Password</label>
+          <label for="password" class="form-label desc-font">New Password:</label>
           <input type="password" class="form-control" id="password" name="password" required>
         </div>
         <div class="mb-3">
-          <label for="repeatPassword" class="form-label">Repeat New Password</label>
+          <label for="repeatPassword" class="form-label desc-font">Repeat New Password:</label>
           <input type="password" class="form-control" id="repeatPassword" name="repeatPassword" required>
         </div>
+     <div class="mb-3">  
+      <h3> Select your Role </h3>
+      <br>
+    <input type="radio" id="owner" name="role" value="Owner">
+    <label for="owner" class ="desc-font">Pet Owner</label><br>
+        </div>
+    
+<div class="mb-3">  
+    <input type="radio" id="aid" name="role" value="Aid">
+    <label for="aid"  class="desc-font">Pet Aid</label><br>
+        </div>
+<div class="mb-3">  
+    <input type="radio" id="Vet" name="role" value="Vet">
+    <label for="vet" class="desc-font">Veterinarian</label><br>
+        </div>
+  <br>
+        
         <button type="submit" class="submit btn btn-primary" name="submit">Create Account</button>
         <a href="login.php" class="submit btn btn-primary" name="submit">Login</a>
       </form> 

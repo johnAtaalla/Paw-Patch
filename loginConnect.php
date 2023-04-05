@@ -34,7 +34,7 @@ if(mysqli_num_rows($rs) == 1) // if user exists with given email and password
     $_SESSION['email'] = $email;
 
     // redirect to home page
-    header("Location: Account.php");
+    header("Location: Landing.php");
 }
 else // if login fails
 {

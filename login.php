@@ -22,25 +22,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active navtext" href="index.php">Home</a>
+          <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link navtext " href="index.php">What We Offer</a>
+        </li>
         <?php
-        
+     
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dashboard
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="Account.php">Account</a></li>
-                    <li><a class="dropdown-item" href="Pets.php">Pets</a></li>
-                    <li><a class="dropdown-item" href="Meds.php">Medications</a></li>
-                    <li><a class="dropdown-item" href="Vaccinations.php">Vacinations</a></li>
-                    <li><a class="dropdown-item" href="Diet.php">Diet</a></li>
-                    <li><a class="dropdown-item" href="Schedule.php">Schedule</a></li>
+                    <li><a class="dropdown-item navtext" href="Account.php">Account</a></li>
+                    <li><a class="dropdown-item navtext" href="Pets.php">Pets</a></li>
+                    <li><a class="dropdown-item navtext" href="Meds.php">Medications</a></li>
+                    <li><a class="dropdown-item navtext" href="Vaccinations.php">Vacinations</a></li>
+                    <li><a class="dropdown-item navtext" href="Diet.php">Diet</a></li>
+                    <li><a class="dropdown-item navtext" href="Schedule.php">Schedule</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item navtext" href="Vet.php">Vet Contact</a></li>
+                    <li><a class="dropdown-item navtext" href="Aid.php">Pet Aid Contact</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
@@ -58,11 +64,13 @@
     </div>
   </div>
 </nav>
+
       <div class="container">
       <div class="row">
         <div class="col"></div>
       <div class="login col-6">
         <h1>Login:</h1>
+        
       <form action="loginConnect.php" method="post">
       
 
@@ -76,23 +84,24 @@
 
 
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <label for="exampleInputEmail1" class="form-label desc-font">Email:</label>
           <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" required>
-          <div id="emailHelp" class="form-text">Please enter your email </div>
+          <div id="emailHelp" class="form-text helper-font">Please enter your email </div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <label for="exampleInputPassword1" class="form-label desc-font">Password:</label>
           <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
         </div>
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          <label class="form-check-label helper-font" for="exampleCheck1">Remember me</label>
         </div>
+        <br>
         <div class="mb-3">
           <input type="button" onclick="window.location.href='AccountCreate.php';" class="submit btn btn-primary" value="No Account? Create One Here"/>
         <br>
         <br>
-        <input type="submit" name="submit" class="submit btn btn-primary" value="Enter"/>
+        <input type="submit" name="submit" class="submit btn btn-primary helper-font" value="Enter"/>
       </div>
       </form> 
       </div> 

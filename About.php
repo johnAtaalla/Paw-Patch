@@ -11,7 +11,7 @@
     <h1><img src="images/Logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">Paw Patch</h1>
 
 
-<nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
  
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,14 +20,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link navtext" href="index.php">Home</a>
+          <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active navtext " href="About.php">About Us</a>
+          <a class="nav-link navtext " href="About.php">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
-        session_start();
-        if(isset($_SESSION['email'])) { // If user is logged in, show all links
+     session_start()
+        if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dashboard
@@ -40,10 +43,13 @@
                     <li><a class="dropdown-item navtext" href="Diet.php">Diet</a></li>
                     <li><a class="dropdown-item navtext" href="Schedule.php">Schedule</a></li>
                     <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item navtext" href="Vet.php">Vet Contact</a></li>
+                    <li><a class="dropdown-item navtext" href="Aid.php">Pet Aid Contact</a></li>
+                    <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
                 </li>';
-        } else { // If user is not logged in, show only Create Account link
+        } else { 
           echo '<li class="nav-item ">
                   <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
                 </li>
@@ -74,15 +80,15 @@
           </div>
           <div class="col-xl-10 col-lg-10 col-md-10 mint" style="border:1px solid">
           <br>
-            <h2>Salena Youhana</h2>
-            <p><b>Project Role: </b> Frontend Development </p>
-            <p><b>College: </b> Oakland University</p>
-            <p><b>Major: </b> Computer Science</p>
+            <h1>Salena Youhana</h1>
+            <p class="pet-name">Project Role:  Frontend Development </p>
+            <p class="pet-name"> College:  Oakland University</p>
+            <p class="pet-name">Major:  Computer Science</p>
             <br>
-            <h2>About Simba </h2>
-            <p> <b>Dog's Breed:</b> Maltese </p>
-            <p> <b>Dog's Age</b>: Three Years Old </p>
-            <p><b>Dog's Hobbies:</b> </p>
+            <h1>About Simba </h1>
+            <p class="pet-name"> Dog's Breed: Maltese </p>
+            <p class="pet-name"> Dog's Age: Three Years Old </p>
+            <p class="pet-name">Dog's Hobbies: </p>
            
     
           </div>
@@ -96,15 +102,15 @@
           </div>
           <div class="col-xl-10 col-lg-10 col-md-10 mint" style="border:1px solid ">
           <br>
-        <h2>Madison Pew</h2>
-            <p><b>Project Role: </b> Frontend Development </p>
-            <p><b>College: </b> Oakland University</p>
-            <p><b>Major: </b> Computer Science</p>
+        <h1>Madison Pew</h1>
+            <p class="pet-name">Project Role:  Frontend Development </p>
+            <p class="pet-name">College:  Oakland University</p>
+            <p class="pet-name">Major:  Computer Science</p>
             <br>
             <h2>About Lulu </h2>
-            <p> <b>Dog's Breed:</b> Greyhound </p>
-            <p> <b>Dog's Age</b>: Eight Years Old</p>
-            <p><b>Dog's Hobbies:</b> </p>
+            <p class="pet-name"> Dog's Breed: Greyhound </p>
+            <p class="pet-name"> Dog's Age: Eight Years Old</p>
+            <p class="pet-name">Dog's Hobbies:</p>
 
             
           </div>
@@ -118,15 +124,15 @@
           </div>
           <div class="col-xl-10 col-lg-10 col-md-10 mint" style="border:1px solid ">
           <br>
-        <h2>John Ataalla</h2>
-            <p><b>Project Role: </b> Backend Development </p>
-            <p><b>College: </b> Oakland University</p>
-            <p><b>Major: </b> Computer Science</p>
+        <h1>John Ataalla</h1>
+            <p class="pet-name">Project Role:  Backend Development </p>
+            <p class="pet-name">College:  Oakland University</p>
+            <p class="pet-name">Major:  Computer Science</p>
             <br>
-            <h2>About Rocky</h2>
-            <p> <b>Dog's Breed:</b> German Shepard </p>
-            <p> <b>Dog's Age</b>: Six Years Old </p>
-            <p><b>Dog's Hobbies:</b> </p>
+            <h1>About Rocky</h1>
+            <p class="pet-name"> Dog's Breed: German Shepard </p>
+            <p class="pet-name"> Dog's Age: Six Years Old </p>
+            <p class="pet-name">Dog's Hobbies: </p>
            
           </div>
         </div>
@@ -139,15 +145,15 @@
           </div>
           <div class="col-xl-10 col-lg-10 col-md-10 mint" style="border:1px solid">
           <br>
-        <h2>Jack Jarrell</h2>
-            <p><b>Project Role: </b> Backend and Frontend Development </p>
-            <p><b>College: </b> Oakland University</p>
-            <p><b>Major: </b> Information Technology</p>
+        <h1>Jack Jarrell</h1>
+            <p class="pet-name">Project Role:  Backend and Frontend Development </p>
+            <p class="pet-name">College:  Oakland University</p>
+            <p class="pet-name">Major:  Information Technology</p>
             <br>
-            <h2>About My Future Dog</h2>
-            <p> <b>Dog's Breed:</b> So many to pick from, but I would want a lap dog. </p>
-            <p> <b>Dog's Age</b>: N/A </p>
-            <p><b>Dog's Hobbies:</b> Id love to eventually get a dog that has high enery but also knows when to relax. </p>
+            <h1>About My Future Dog</h1>
+            <p class="pet-name"> Dog's Breed: So many to pick from, but I would want a lap dog. </p>
+            <p class="pet-name"> Dog's Age: N/A </p>
+            <p class="pet-name">Dog's Hobbies: Id love to eventually get a dog that has high enery but also knows when to relax. </p>
            
           </div>
         </div>

@@ -99,7 +99,7 @@ mysqli_close($conn);
 }
 </style>
 
-<nav class="navbar navbar-expand-lg sticky-top">
+ <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
  
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,13 +108,16 @@ mysqli_close($conn);
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active navtext" href="index.php">Home</a>
+          <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link navtext " href="index.php">What We Offer</a>
+        </li>
         <?php
-      
+     
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -127,6 +130,9 @@ mysqli_close($conn);
                     <li><a class="dropdown-item navtext" href="Vaccinations.php">Vacinations</a></li>
                     <li><a class="dropdown-item navtext" href="Diet.php">Diet</a></li>
                     <li><a class="dropdown-item navtext" href="Schedule.php">Schedule</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item navtext" href="Vet.php">Vet Contact</a></li>
+                    <li><a class="dropdown-item navtext" href="Aid.php">Pet Aid Contact</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
@@ -144,19 +150,22 @@ mysqli_close($conn);
     </div>
   </div>
 </nav>
+
       <div class="header">
         <div>
-          <h2 class="our-desc">My Pets</h2> 
+          <p class="our-desc">My Pets</p> 
         </div>
       </div>
       <br>
 
-      <div class="container-fluid" >
+      <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height:450px;">
-            <a class="nav-link side-bar " href="Account.php">Account</a>
+            <div class="col-sm sidebar" style="height:515px;">
+            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
             <hr>
-            <a class="nav-link side-bar activated" href="Pets.php">Pets</a>
+            <a class="nav-link side-bar" href="Account.php">Account</a>
+            <hr>
+            <a class="nav-link side-bar" href="Pets.php">Pets</a>
             <hr>
                 <a class="nav-link side-bar" href="Vaccinations.php">Vaccines</a>
             <hr>
@@ -176,18 +185,18 @@ mysqli_close($conn);
 foreach ($petInfo as $pet) {
   echo '<div class="card" style="font-size:20px;">
           <div class="card-body"">
-            <h5 class="card-text" style="font-size = 20pt">' . $pet['Name'] . '</h5>
+            <h1 class="card-text ">' . $pet['Name'] . '</h1>
             <br>
             <div class="col-xl-2 col-lg-2 col-md-2">
             <img src="' . $pet['imageDir'] . '" alt="dog picture" class="img-fluid">
             </div>
             <br>
-            <h6 class="card-text mb-2">Species: ' . $pet['Species'] . '</h6>
-            <p class="card-text">Breed: ' . $pet['Breed'] . '</p>
-            <p class="card-text">Age: ' . $pet['Age'] . '</p>
-            <p class="card-text">Gender: ' . $pet['Gender'] . '</p>
-            <p class="card-text">Health Problems: ' . $pet['Health_Problems'] . '</p>
-            <p class="card-text">General Information: ' . $pet['General'] . '</p>
+            <p class="card-text mb-2 pet-name">Species: ' . $pet['Species'] . '</p>
+            <p class="card-text pet-name">Breed: ' . $pet['Breed'] . '</p>
+            <p class="card-text pet-name">Age: ' . $pet['Age'] . '</p>
+            <p class="card-text pet-name">Gender: ' . $pet['Gender'] . '</p>
+            <p class="card-text pet-name">Health Problems: ' . $pet['Health_Problems'] . '</p>
+            <p class="card-text pet-name">General Information: ' . $pet['General'] . '</p>
           </div>
         </div>
         

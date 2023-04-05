@@ -15,44 +15,49 @@
     <h1><img src="images/Logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">Paw Patch</h1>
     
 
-
-<nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">Paw Patch</a>
+ 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="index.php">Home</a>
+          <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="About.php">About Us</a>
+          <a class="nav-link navtext " href="About.php">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
      
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dashboard
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="Account.php">Account</a></li>
-                    <li><a class="dropdown-item" href="Pets.php">Pets</a></li>
-                    <li><a class="dropdown-item" href="Meds.php">Medications</a></li>
-                    <li><a class="dropdown-item" href="Vaccinations.php">Vacinations</a></li>
-                    <li><a class="dropdown-item" href="Diet.php">Diet</a></li>
-                    <li><a class="dropdown-item" href="Schedule.php">Schedule</a></li>
+                    <li><a class="dropdown-item navtext" href="Account.php">Account</a></li>
+                    <li><a class="dropdown-item navtext" href="Pets.php">Pets</a></li>
+                    <li><a class="dropdown-item navtext" href="Meds.php">Medications</a></li>
+                    <li><a class="dropdown-item navtext" href="Vaccinations.php">Vacinations</a></li>
+                    <li><a class="dropdown-item navtext" href="Diet.php">Diet</a></li>
+                    <li><a class="dropdown-item navtext" href="Schedule.php">Schedule</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item navtext" href="Vet.php">Vet Contact</a></li>
+                    <li><a class="dropdown-item navtext" href="Aid.php">Pet Aid Contact</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
                 </li>';
         } else { // If user is not logged in, show only Create Account link
           echo '<li class="nav-item ">
-                  <a class="nav-link " href="AccountCreate.php">Create Account</a>
+                  <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item navtext ">
                   <a class="nav-link " href="login.php">Login</a>
                 </li>';
         }
@@ -61,6 +66,7 @@
     </div>
   </div>
 </nav>
+
       <div class="header">
         <div>
           <h2 class="our-desc">Vaccinations</h2> 
@@ -71,8 +77,10 @@
 
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height = 450px;">
-            <a class="nav-link side-bar activated" href="Account.php">Account</a>
+            <div class="col-sm sidebar" style="height:515px;">
+            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
+            <hr>
+            <a class="nav-link side-bar" href="Account.php">Account</a>
             <hr>
             <a class="nav-link side-bar" href="Pets.php">Pets</a>
             <hr>
@@ -82,7 +90,7 @@
             <hr>
                 <a class="nav-link side-bar" href="Diet.php">Diet</a>
             <hr>
-                <a class="nav-link side-bar" href="Diet.php">Schedules</a>
+                <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
           <div class="col-xl-10 col-lg-10 col-md-10" id="vacc-desc">
             <h2 style="color:black">Vaccination Cards for My Pets </h2>
@@ -124,8 +132,8 @@ if (mysqli_num_rows($result) > 0) {
       }
       // Open a new card for the current pet
       echo "<div class='card'>";
-      echo "<div class='card-header'>Vaccines for ".$row['PetName']."</div>";
-      echo "<div class='card-body'>";
+      echo "<div class='card-header pet-name'>Vaccines for ".$row['PetName']."</div>";
+      echo "<div class='card-body desc-font'>";
       echo "<table class='table'>";
       echo "<thead><th>Vaccine Name</th><th>Vaccine Date</th></tr></thead>";
       echo "<tbody>";

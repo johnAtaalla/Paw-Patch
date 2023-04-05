@@ -1,7 +1,52 @@
-<?php
-session_start();
-?>
 
+<?php
+
+
+// Start the session
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['loggedin'])) {
+  // Redirect to login page if user is not logged in
+  header('Location: login.html');
+  exit;
+}
+
+// Connect to the database
+$servername = "localhost";
+$username = "root";
+$password = "oakland";
+$dbname = "pawpatch";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+// Get user's name from the database
+$email = mysqli_real_escape_string($conn, $_SESSION['email']);
+$sql = "SELECT firstname, lastname, email, phone, address FROM user WHERE email = '$email'";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+  $row = mysqli_fetch_assoc($result);
+  $fname = $row['firstname'];
+  $lname = $row['lastname'];
+  $email = $row['email']; 
+  $phone = $row['phone'];
+  $address = $row['address'];
+} else {
+  $fname = "Unknown";
+  $lastname ="Uknown";
+  $email = "Uknown";
+  $phone = "Uknown";
+  $address = "Uknown";
+}
+
+mysqli_close($conn);
+?>
 
 
 <!doctype html>
@@ -15,10 +60,6 @@ session_start();
   </head>
   <body class>
     <h1><img src="images/Logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">Paw Patch</h1>
-
-    
-
-
     <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
  
@@ -71,18 +112,19 @@ session_start();
   </div>
 </nav>
 
-      <div class="header">
+
+      <div class="welcome-to">
         <div>
-          <h2 class="our-desc">Diet</h2> 
+        <h2 class="our-desc">Welcome <?php echo $fname; ?></h2> 
         </div>
       </div>
       <br>
-    
-     
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height = 450px;">
-            <a class="nav-link side-bar activated" href="Account.php">Account</a>
+            <div class="col-sm sidebar" style="height:515px;">
+            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
+            <hr>
+            <a class="nav-link side-bar" href="Account.php">Account</a>
             <hr>
             <a class="nav-link side-bar" href="Pets.php">Pets</a>
             <hr>
@@ -92,72 +134,61 @@ session_start();
             <hr>
                 <a class="nav-link side-bar" href="Diet.php">Diet</a>
             <hr>
-                <a class="nav-link side-bar" href="Diet.php">Schedules</a>
+                <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="diet-desc">
-            <h2 style="color:black">Diet Information</h2>
+          <div class="col-xl-10 col-lg-10 col-md-10" id="profile-desc">
+            <h2 style="color:black">Your Dashboard</h2>
             <br>
-            
-            <?php 
-// Connect to the database
-$host = 'localhost';
-$user = 'root';
-$pass = 'oakland';
-$db   = 'pawpatch';
-$conn = mysqli_connect($host, $user, $pass, $db);
-
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
-
-// Define the email address you want to retrieve pets for
-$email = $_SESSION['email'];
-
-// Execute the query
-$sql = "SELECT diet.DietID, diet.Type, diet.Portion, diet.Frequency, pet.PetID, pet.Name AS PetName 
-        FROM diet 
-        INNER JOIN pet ON diet.PetID = pet.PetID 
-        INNER JOIN user ON pet.email = user.email 
-        WHERE user.email = '$email'";
-$result = mysqli_query($conn, $sql);
-
-// Check if the query returned any results
-if (mysqli_num_rows($result) > 0) {
-  // Output the results as a Bootstrap card for each pet
-  while ($row = mysqli_fetch_assoc($result)) {
-    echo "<div class='card'>";
-    echo "<div class='card-header pet-name'>Diet for " . $row['PetName'] . "</div>";
-    echo "<div class='card-body desc-font'>";
-    echo "<table class='table'>";
-    echo "<thead><th>Type</th><th>Portion</th><th>Frequency</th></tr></thead>";
-    echo "<tbody>";
-    echo "</td><td>".$row['Type']."</td><td>".$row['Portion']."</td><td>".$row['Frequency']."</td></tr>";
-    echo "</tbody>";
-    echo "</table>";
-    echo "</div>";
-    echo "</div>";
-  }
-} else {
-  // If the query returned no results, output an error message
-  echo "No results found.";
-}
-
-// Close the database connection
-mysqli_close($conn);
-?>   
-
-
-
+            <div class="row">
+                <div class="col" style="Background-color:white; width: 300px; margin-right:10px; margin-left:20px; padding:10px;">
+            <h4>To-Do List:</h4>
+            <p>- Buy dog food</p>
+            <p>- Schedule appointment</p>
+            <button type="submit" class="pet-create btn btn-primary">Add Task</button>
+                </div>
+                <div class="col-md-2" style="Background-color:white; width: 300px; margin-right:10px; margin-left:10px; padding:10px;">
+            <h4>Your Pets:</h4>
+            <p>- Pet1</p>
+            <p>- Pet2</p>
+                </div>
+                <div class="col-md-2" style="margin-right:10px;">
+                <img class="img-fluid img-thumbnail float-right" src="images/lulu.jpg" style="height:200px; width:175px;">
+                </div>
+                
+    </div>
+            <br>
+            <div class="row" style="Background-color:white; margin-left:10px; margin-right:10px; padding:10px;">
+            <h4>Upcoming Events/Appointments:</h4>
+            <div class="col" style="border:1px solid black; width: 50px; padding:10px; margin:10px;">
+            <h4>April 10</h4>    
+            <h5>Vet Visit - 10:00am</h5>
+            <p>123 Fake rd <br>Dr. veterinarian</p>  
+            <p>For: Lulu</p>
+            </div>
+            <div class="col" style="border:1px solid black; width: 50px; padding:10px; margin:10px;">
+            <h4>April 24</h4>    
+            <h5>Vet Follow-up - 1:00pm</h5>
+            <p>123 Fake rd <br>Dr. veterinarian</p> 
+            <p>For: Lulu</p> 
+            </div>
+            <div class="col" style="border:1px solid black; width: 50px; padding:10px; margin:10px;">
+            <h4>June 19</h4>    
+            <h5>Groomer - 9:00am</h5>
+            <p>4895 Dog st. <br>Mr. Groomer</p>  
+            <p>For: Bella</p>
+            </div>
+            <div class="col" style="border:1px solid black; width: 50px;padding:10px; margin:10px;">
+            <h4>Add Event/ Appointment</h4>    
+            <h1>+</h1> 
+            </div>
+            </div>
+            </div>
           </div>
         </div>
       </div>
       <br>
-      <div class="container-fluid">
-        <div class="row">
-                <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
-          <div class="col-xl-10 col-lg-10 col-md-10">
-      <button type="submit" class="pet-add btn btn-primary">Add Diet Info</button>
+      <br>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
