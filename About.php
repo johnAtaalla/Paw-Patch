@@ -29,7 +29,7 @@
           <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
-     session_start()
+  
         if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
