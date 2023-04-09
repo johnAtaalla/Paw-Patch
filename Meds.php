@@ -1,11 +1,6 @@
 <?php
     session_start();
   ?>
-
-
-
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
-  <body class>
+  <body>
     <h1><img src="images/Logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">Paw Patch</h1>
 
     <nav class="navbar navbar-expand-lg sticky-top">
@@ -123,33 +118,49 @@ $result = mysqli_query($conn, $sql);
 
 // Check if the query returned any results
 if (mysqli_num_rows($result) > 0) {
-  // Output a Bootstrap card for each pet, with their medications displayed in a table
+  // Initialize an array to hold the pet IDs
+  $petIDs = array();
+  
+  // Loop through the result and populate the pet IDs array
   while ($row = mysqli_fetch_assoc($result)) {
-    // If this is the first medication for this pet, output the card header and start the table
-    if (!isset($currentPetID) || $currentPetID != $row['PetID']) {
-      // If this isn't the first pet, close the previous card
-      if (isset($currentPetID)) {
-        echo "</tbody></table></div></div>";
-      }
-      
-      // Start the new card
-      echo "<div class='card'>";
-      echo "<div class='card-header pet-name'>Medications for " . $row['PetName'] . "</div>";
-      echo "<div class='card-body desc-font'>";
-      echo "<table class='table'>";
-      echo "<thead><tr><th>Medication Name</th><th>Start Date</th><th>Stop Date</th><th>Dose</th></tr></thead>";
-      echo "<tbody>";
-      
-      // Update the current pet ID
-      $currentPetID = $row['PetID'];
-    }
+    $petID = $row['PetID'];
     
-    // Output the medication row for this pet
-    echo "<tr><td>" . $row['MedName'] . "</td><td>" . $row['MedStart'] . "</td><td>" . $row['MedStop'] . "</td><td>" . $row['MedDose'] . "</td></tr>";
+    // If the pet ID is not in the array, add it
+    if (!in_array($petID, $petIDs)) {
+      $petIDs[] = $petID;
+    }
   }
   
-  // Close the last card
-  echo "</tbody></table></div></div>";
+  // Loop through the pet IDs and output a Bootstrap card for each pet, with their medications displayed in a table
+  foreach ($petIDs as $petID) {
+    // Execute the query to retrieve the medications for this pet
+    $sql = "SELECT m.MedID, m.MedName, m.MedStart, m.MedStop, m.MedDose, p.Name
+            FROM med m
+            JOIN pet p ON m.PetID = p.PetID
+            WHERE m.PetID = '$petID'";
+
+    $result = mysqli_query($conn, $sql);
+
+    // Fetch the pet's name from the query result
+    $row = mysqli_fetch_assoc($result);
+    $petName = $row['Name'];
+
+    // Output the card header and start the table
+    echo "<div class='card'>";
+    echo "<div class='card-header pet-name'>Medications for " . $petName . "</div>";
+    echo "<div class='card-body desc-font'>";
+    echo "<table class='table'>";
+    echo "<thead><tr><th>Medication Name</th><th>Start Date</th><th>Stop Date</th><th>Dose</th></tr></thead>";
+    echo "<tbody>";
+
+    // Loop through the medications and output each row
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr><input type='hidden' name='MedID[]' value='" . $row['MedID'] . "'><td>" . $row['MedName'] . "</td><td>" . $row['MedStart'] . "</td><td>" . $row['MedStop'] . "</td><td>" . $row['MedDose'] . "</td></tr>";
+    }
+
+    // Close the table and card body
+    echo "</tbody></table></div></div>";
+}
 } else {
   // If the query returned no results, output an error message
   echo "No results found.";
@@ -164,10 +175,53 @@ mysqli_close($conn);
       <br>
     
       <div class="container-fluid">
-        <div class="row">
-                <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
-          <div class="col-xl-10 col-lg-10 col-md-10">
-      <button type="submit" class="pet-add btn btn-primary">Add Medication</button>
+  <div class="row">
+    <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
+    <div class="col-xl-10 col-lg-10 col-md-10">
+      <button onclick="toggleForm()">Add Medication</button>
+
+      <form action="AddMeds.php" method="post" id="med-form" style="display: none;">
+        <label for="med-name">Medication Name:</label>
+        <input type="text" id="MedName" name="MedName"><br>
+
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="MedStart" name="MedStart"><br>
+
+        <label for="stop-date">Stop Date:</label>
+        <input type="date" id="MedStop" name="MedStop"><br>
+
+        <label for="dose">Dose:</label>
+        <input type="text" id="MedDose" name="MedDose"><br>
+
+        <label for="pet-name">Pet Name:</label>
+        <?php include 'getPets.php'; ?>
+        <br>
+
+        <button name="submit" type="submit">Save</button>
+      </form>
+   
+    </div>
+  </div>
+</div>
+
+<script> 
+function toggleForm() {
+  var form = document.getElementById("med-form");
+  if (form.style.display === "none") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
+}
+
+</script>
+
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>

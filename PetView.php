@@ -1,6 +1,16 @@
+<style>
+th,td {
+    border-style: solid;
+    border-width: 5px;
+    overflow: hidden;
+}
+
+</style>
 <?php
-    session_start();
-  ?>
+session_start();
+?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -13,7 +23,9 @@
   </head>
   <body class>
     <h1><img src="images/Logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">Paw Patch</h1>
+
     
+
 
     <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
@@ -69,16 +81,16 @@
 
       <div class="header">
         <div>
-          <h2 class="our-desc">Vaccinations</h2> 
+          <h2 class="our-desc">Client Information</h2> 
         </div>
       </div>
       <br>
-      
-
+    
+     
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height:515px;">
-            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
+            <div class="col-sm sidebar" style="height = 450px;">
+            <a class="nav-link side-bar" href="Landing.php">Dashboard</a>
             <hr>
             <a class="nav-link side-bar" href="Account.php">Account</a>
             <hr>
@@ -92,9 +104,10 @@
             <hr>
                 <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="vacc-desc">
-            <h2 style="color:black">Vaccination Cards for My Pets </h2>
+          <div class="col-xl-10 col-lg-10 col-md-10" id="diet-desc">
+            <h2 style="color:black">My Clients</h2>
             <br>
+            
             <?php 
 // Connect to the database
 $host = 'localhost';
@@ -112,38 +125,25 @@ if (!$conn) {
 $email = $_SESSION['email'];
 
 // Execute the query
-$sql = "SELECT vaccine.VacName, vaccine.VacDate, pet.PetID, pet.Name AS PetName
-        FROM vaccine 
-        INNER JOIN pet ON vaccine.PetID = pet.PetID 
-        INNER JOIN user ON pet.email = user.email 
-        WHERE user.email = '$email'
-        ORDER BY pet.PetID";
+$sql = "SELECT * FROM pet";
 $result = mysqli_query($conn, $sql);
 
 // Check if the query returned any results
 if (mysqli_num_rows($result) > 0) {
-  $previousPetID = null; // Initialize the previous PetID to null
+  // Output the results as a Bootstrap card for each pet
   while ($row = mysqli_fetch_assoc($result)) {
-    $currentPetID = $row['PetID'];
-    if ($currentPetID != $previousPetID) {
-      // Close the previous card (if it exists)
-      if ($previousPetID != null) {
-        echo "</tbody></table></div></div>";
-      }
-      // Open a new card for the current pet
-      echo "<div class='card'>";
-      echo "<div class='card-header pet-name'>Vaccines for ".$row['PetName']."</div>";
-      echo "<div class='card-body desc-font'>";
-      echo "<table class='table'>";
-      echo "<thead><th>Vaccine Name</th><th>Vaccine Date</th></tr></thead>";
-      echo "<tbody>";
-      $previousPetID = $currentPetID; // Set the previous PetID to the current PetID
-    }
-    // Output the current vaccine for the current pet
-    echo "<tr><td>".$row['VacName']."</td><td>".$row['VacDate']."</td></tr>";
+    echo "<div class='card'>";
+    echo "<div class='card-header pet-name'>Pet Information" . $row['PetName'] . "</div>";
+    echo "<div class='card-body desc-font'>";
+    echo "<table class='table'>";
+    echo "<thead><th>Name</th><th>Breed</th><th>Age</th><th>Gender</th><th>Health Problems</th><th>Owner Contact</th></tr></thead>";
+    echo "<tbody>";
+    echo "</td><td>".$row['Name']."</td><td>".$row['Breed']."</td><td>".$row['Age']."</td><td>".$row['Gender']."</td><td>".$row['Health_Problems']."</td><td>".$row['email']."</td></tr>";
+    echo "</tbody>";
+    echo "</table>";
+    echo "</div>";
+    echo "</div>";
   }
-  // Close the final card
-  echo "</tbody></table></div></div>";
 } else {
   // If the query returned no results, output an error message
   echo "No results found.";
@@ -151,94 +151,19 @@ if (mysqli_num_rows($result) > 0) {
 
 // Close the database connection
 mysqli_close($conn);
+?>   
 
-?>
+
+
           </div>
         </div>
       </div>
       <br>
-     
-      <br>
       <div class="container-fluid">
-        <div class="row" style="margin-top:10px;">
-          <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
+        <div class="row">
+                <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
           <div class="col-xl-10 col-lg-10 col-md-10">
-          <button onclick="toggleForm()">Add Vaccine</button></div>
-       
-          <form action="AddVac.php" method="post" id="vac-form" style="display: none;">
-        <label for="med-name">Vaccine Name:</label>
-        <input type="text" id="VacName" name="VacName"><br>
-
-        <label for="start-date">Vaccine Date:</label>
-        <input type="date" id="VacDate" name="VacDate"><br>
-
-
-        <label for="pet-name">Pet Name:</label>
-        <?php include 'getPets.php'; ?>
-        <br>
-
-        <button name="submit" type="submit">Save</button>
-      </form>
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <script> 
-function toggleForm() {
-  var form = document.getElementById("vac-form");
-  if (form.style.display === "none") {
-    form.style.display = "block";
-  } else {
-    form.style.display = "none";
-  }
-}
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
+      <button type="submit" class="pet-add btn btn-primary">Add New Client</button>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>

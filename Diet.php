@@ -119,45 +119,124 @@ $sql = "SELECT diet.DietID, diet.Type, diet.Portion, diet.Frequency, pet.PetID, 
         FROM diet 
         INNER JOIN pet ON diet.PetID = pet.PetID 
         INNER JOIN user ON pet.email = user.email 
-        WHERE user.email = '$email'";
+        WHERE user.email = '$email'
+         ORDER BY pet.PetID";
+
 $result = mysqli_query($conn, $sql);
 
 // Check if the query returned any results
 if (mysqli_num_rows($result) > 0) {
-  // Output the results as a Bootstrap card for each pet
+  $previousPetID = null; // Initialize the previous PetID to null
   while ($row = mysqli_fetch_assoc($result)) {
-    echo "<div class='card'>";
-    echo "<div class='card-header pet-name'>Diet for " . $row['PetName'] . "</div>";
-    echo "<div class='card-body desc-font'>";
-    echo "<table class='table'>";
-    echo "<thead><th>Type</th><th>Portion</th><th>Frequency</th></tr></thead>";
-    echo "<tbody>";
-    echo "</td><td>".$row['Type']."</td><td>".$row['Portion']."</td><td>".$row['Frequency']."</td></tr>";
-    echo "</tbody>";
-    echo "</table>";
-    echo "</div>";
-    echo "</div>";
+    $currentPetID = $row['PetID'];
+    if ($currentPetID != $previousPetID) {
+      // Close the previous card (if it exists) and output the edit button
+      if ($previousPetID != null) {
+        echo "</tbody></table>";
+        echo '<button type="button" class="btn btn-primary" onclick="toggleUpdate()"'.$previousPetID.'">Edit</button>';
+        echo '<div id="edit-form'.$previousPetID.'" class="collapse">';
+        echo '<form method="post" action="edit_diet.php">';
+        echo '<input type="hidden" name="petid" value="'.$previousPetID.'">';
+        echo '<input type="text" name="type">';
+        echo '<input type="text" name="portion">';
+        echo '<input type="text" name="frequency">';
+        echo '<button type="submit">Save</button>';
+        echo '</form>';
+        echo '</div>';
+        echo '</div>';
+      }
+      // Open a new card for the current pet
+      echo '<div class="card">
+       <div class="card-header pet-name">Diet for ' .$row['PetName'].'</div>
+       <div class="card-body desc-font">
+      <table class="table">
+      <thead><tr><th>Type</th><th>Portion</th><th>Frequency</th></tr></thead>
+       <tbody>';
+      $previousPetID = $currentPetID; // Set the previous PetID to the current PetID
+    }
+    // Output the current diet entry for the current pet
+    echo "<tr><td>".$row['Type']."</td><td>".$row['Portion']."</td><td>".$row['Frequency']."</td></tr>";
   }
+  // Close the final card and output the edit button
+  echo "</tbody></table>";
+  echo '<button type="button" class="btn btn-primary" onclick="toggleUpdate()" '.$previousPetID.'">Edit</button>';
+  echo '<div id="edit-form-'.$previousPetID.'" class="collapse">';
+  echo '<form method="post" action="edit_diet.php">';
+  echo '<input type="hidden" name="petid" value="'.$previousPetID.'">';
+  echo '<input type="text" name="type">';
+  echo '<input type="text" name="portion">';
+  echo '<input type="text" name="frequency">';
+  echo '<button type="submit">Save</button>';
+  echo '</form>';
+  echo '</div>';
+  echo '</div>';
 } else {
   // If the query returned no results, output an error message
   echo "No results found.";
 }
-
 // Close the database connection
 mysqli_close($conn);
-?>   
+?>
 
 
 
           </div>
-        </div>
-      </div>
-      <br>
-      <div class="container-fluid">
+          <br>
+          <div class="container-fluid">
         <div class="row">
                 <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
           <div class="col-xl-10 col-lg-10 col-md-10">
-      <button type="submit" class="pet-add btn btn-primary">Add Diet Info</button>
+      <button onclick="toggleForm()">Add Diet Info</button>
+
+      <form action="AddDiet.php" method="post" id="diet-form" style="display: none;">
+        <label for="type">Type of Food:</label>
+        <input type="text" id="Type" name="Type"><br>
+
+        <label for="portion">Portion:</label>
+        <input type="text" id="Portion" name="Portion"><br>
+
+        <label for="freq">Frequency:</label>
+        <input type="text" id="Frequency" name="Frequency"><br>
+
+        
+
+        <label for="pet-name">Pet Name:</label>
+        <?php include 'getPets.php'; ?>
+        <br>
+
+        <button name="submit" type="submit">Save</button>
+      </form>
+      </div>
+        </div>
+      </div>
+      <br>
+    
+  </div>
+</div>
+
+<script> 
+function toggleForm() {
+  var form = document.getElementById("diet-form");
+  if (form.style.display === "none") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
+}
+
+</script>
+
+<script>
+function toggleUpdate() {
+  var form = document.getElementById("edit-form");
+  if (form.style.display === "none") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
+}
+</script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
