@@ -144,15 +144,17 @@ mysqli_close($conn);
             <h4>To-Do List:</h4>
             <p>- Buy dog food</p>
             <p>- Schedule appointment</p>
+            <p>- Groom Jerry</p>
+            <p>- Train Tom</p>
             <button type="submit" class="pet-create btn btn-primary">Add Task</button>
                 </div>
                 <div class="col-md-2" style="Background-color:white; width: 300px; margin-right:10px; margin-left:10px; padding:10px;">
             <h4>Your Pets:</h4>
-            <p>- Pet1</p>
-            <p>- Pet2</p>
+            <p>- Tom<br>Age: 3<br>Tom has a broken leg</p>
+            <p>- Jerry<br>Age: 3<br>Jerry has anxiety</p>
                 </div>
                 <div class="col-md-2" style="margin-right:10px;">
-                <img class="img-fluid img-thumbnail float-right" src="images/lulu.jpg" style="height:200px; width:175px;">
+                <img class="img-fluid img-thumbnail float-right" src="petPhotos/jerry.jpg" style="height:150px; width:175px;">
                 </div>
                 
     </div>
@@ -182,9 +184,23 @@ mysqli_close($conn);
             <h1>+</h1> 
             </div>
             </div>
+            <br>
+            <div class="row" style="Background-color:white; margin-left:10px; margin-right:10px; padding:10px;">
+            <h3>Suggested Videos:</h3>
+            <div class="col">
+            <iframe height="300px" width="325px" src="https://www.youtube.com/embed/g6eB8IeX_cs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="col">
+            <iframe height="300px" width="325px" src="https://www.youtube.com/embed/romnmHdGH08" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="col">
+            <iframe height="300px" width="325px" src="https://www.youtube.com/embed/qNtwkSVr2Pw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            </div>
             </div>
           </div>
         </div>
+      </div>
       </div>
       <br>
       <br>
