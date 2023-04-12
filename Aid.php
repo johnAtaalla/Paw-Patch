@@ -26,20 +26,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
      
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"style="padding-left:20px; padding-right:20px;">
                     Dashboard
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -78,7 +78,7 @@
      <br>
      <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height:515px;">
+            <div class="col-sm sidebar h-100" style="height:515px;">
             <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
             <hr>
             <a class="nav-link side-bar" href="Account.php">Account</a>
@@ -93,7 +93,7 @@
             <hr>
                 <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="med-desc">
+          <div class="col-xl-10 col-lg-10 col-md-10" id="med-desc" style="border:1px solid black; min-height:515px;">
           <h2 style="color:black">Reach Out and Contact Our Trusted Pet Aids!</h2>
           <br>
             <?php 

@@ -76,20 +76,20 @@ mysqli_close($conn);
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
      
         if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left:20px; padding-right:20px;">
                     Dashboard
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -127,11 +127,11 @@ mysqli_close($conn);
       </div>
       <br>
       <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm sidebar" style="height:515px;">
-            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
+        <div class="row" style="height=1000px;">
+            <div class="col-sm sidebar h-50">
+            <a class="nav-link side-bar" href="Landing.php">Dashboard</a>
             <hr>
-            <a class="nav-link side-bar" href="Account.php">Account</a>
+            <a class="nav-link side-bar activated" href="Account.php">Account</a>
             <hr>
             <a class="nav-link side-bar" href="Pets.php">Pets</a>
             <hr>
@@ -143,9 +143,10 @@ mysqli_close($conn);
             <hr>
                 <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="profile-desc">
+          <div class="col-xl-10 col-lg-10 col-md-10 align-items-start" id="profile-desc">
             <h2 style="color:black">Personal Info</h2>
-            
+            <br>
+            <div class="profile-display" style="background-color:white; padding:20px;">
             <?php
 if(isset($_POST['edit'])){ 
   ?>
@@ -153,29 +154,30 @@ if(isset($_POST['edit'])){
   <form method="post" action="updateAccount.php">
    
     <span class="d-block label label-default">First Name</span>
-    <input type="text" name="firstname" value="<?php echo $fname; ?>">
+    <input type="text" style="border:1px solid grey;"name="firstname" value="<?php echo $fname; ?>">
     <span class="d-block label label-default">Last Name</span>
-    <input type="text" name="lastname" value="<?php echo $lname; ?>">
+    <input type="text" style="border:1px solid grey;"name="lastname" value="<?php echo $lname; ?>">
     <span class="d-block label label-default">Email</span>
-    <input type="text" name="email" value="<?php echo $email; ?>">
+    <input type="text" style="border:1px solid grey;"name="email" value="<?php echo $email; ?>">
     <span class="d-block label label-default">Phone</span>
-    <input type="text" name="phone" value="<?php echo $phone; ?>">
+    <input type="text"style="border:1px solid grey;" name="phone" value="<?php echo $phone; ?>">
     <span class="d-block label label-default">Address</span>
-    <input type="text" name="address" value="<?php echo $address; ?>">
+    <input type="text" style="border:1px solid grey;"name="address" value="<?php echo $address; ?>">
     <?php if ($role == "Vet" || $role == "Aid") { ?>
       <?php if ($role == "Vet") { ?>
         <span class="d-block label label-default">Degree</span>
-        <input type="text" name="degree" value="<?php echo $degree; ?>">
+        <input type="text" style="border:1px solid grey;"name="degree" value="<?php echo $degree; ?>">
       <?php } ?>
       <?php if ($role == "Aid") { ?>
         <span class="d-block label label-default">Certification</span>
-        <input type="text" name="cert" value="<?php echo $cert; ?>">
+        <input type="text" style="border:1px solid grey;"name="cert" value="<?php echo $cert; ?>">
       <?php } ?>
       <span class="d-block label label-default">Years of Experience</span>
-      <input type="text" name="yearsP" value="<?php echo $yearsP; ?>">
+      <input type="text" style="border:1px solid grey;"name="yearsP" value="<?php echo $yearsP; ?>">
     <?php } ?>
     <div class=".d-print-block">
-      <input type="submit" name="update" value="Update">
+      <br>
+      <input type="submit" class="btn btn-primary" name="update" value="Update">
     </div>
   </form>
   <?php
@@ -196,8 +198,10 @@ if(isset($_POST['edit'])){
     <?php } ?>
     <p class="acc-font">Years of Experience: <?php echo $yearsP; ?></p>
   <?php } ?>
+    </div>
+    <br>
   <form method="post" action="">
-    <input type="submit" name="edit" value="Edit">
+    <input type="submit" class="btn btn-primary" name="edit" value="Edit">
   </form>
   <?php
 }

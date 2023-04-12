@@ -23,20 +23,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
      
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"style="padding-left:20px; padding-right:20px;">
                     Dashboard
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -77,14 +77,14 @@
 
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height:515px;">
-            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
+            <div class="col-sm sidebar h-100" style="height:515px;">
+            <a class="nav-link side-bar" href="Landing.php">Dashboard</a>
             <hr>
             <a class="nav-link side-bar" href="Account.php">Account</a>
             <hr>
             <a class="nav-link side-bar" href="Pets.php">Pets</a>
             <hr>
-                <a class="nav-link side-bar" href="Vaccinations.php">Vaccines</a>
+                <a class="nav-link side-bar activated" href="Vaccinations.php">Vaccines</a>
             <hr>
                 <a class="nav-link side-bar" href="Meds.php">Medications</a>
             <hr>
@@ -92,7 +92,7 @@
             <hr>
                 <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="vacc-desc">
+          <div class="col-xl-10 col-lg-10 col-md-10"style="border:1px solid black;" id="vacc-desc">
             <h2 style="color:black">Vaccination Cards for My Pets </h2>
             <br>
             <?php 
@@ -153,69 +153,38 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($conn);
 
 ?>
+<div class="container-fluid">
+        <div class="row" style="margin-top:10px;">
+          
+          <div class="col-xl-10 col-lg-10 col-md-10">
+          <br>
+          <button class="btn btn-primary"onclick="toggleForm()">Add Vaccine</button><br>
+          <br>
+       
+          <form action="AddVac.php" method="post" id="vac-form" style="display: none; background-color:white; padding:10px;">
+        <label for="med-name">Vaccine Name:</label>
+        <input type="text" style="border:1px solid grey;"id="VacName" name="VacName"><br>
+        <label for="start-date">Vaccine Date:</label>
+        <br>
+        <input type="date" id="VacDate" name="VacDate"><br>
+        <br>
+
+        <label for="pet-name">Pet Name:</label>
+        <?php include 'getPets.php'; ?>
+        <br>
+        <br>
+        <button name="submit" class="btn btn-primary"type="submit">Save</button>
+</form>
+</div>
+        </div>
           </div>
         </div>
       </div>
       <br>
      
       <br>
-      <div class="container-fluid">
-        <div class="row" style="margin-top:10px;">
-          <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
-          <div class="col-xl-10 col-lg-10 col-md-10">
-          <button onclick="toggleForm()">Add Vaccine</button></div>
-       
-          <form action="AddVac.php" method="post" id="vac-form" style="display: none;">
-        <label for="med-name">Vaccine Name:</label>
-        <input type="text" id="VacName" name="VacName"><br>
-
-        <label for="start-date">Vaccine Date:</label>
-        <input type="date" id="VacDate" name="VacDate"><br>
-
-
-        <label for="pet-name">Pet Name:</label>
-        <?php include 'getPets.php'; ?>
-        <br>
-
-        <button name="submit" type="submit">Save</button>
-      </form>
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-        </div>
+      
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       <script> 
 function toggleForm() {

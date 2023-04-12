@@ -45,7 +45,7 @@
 .main1 {
     background-color:#B6E2D3;
     padding: 10px;
-    height: 250px;
+    height: 300px;
     text-align: center;
     
 }
@@ -291,8 +291,7 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#diet-desc {
-    border: 3px solid;
+.diet-desc {
     margin: auto;
     padding: 20px;
     color:black;

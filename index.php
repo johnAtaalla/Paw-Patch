@@ -22,20 +22,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
      
         if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"style="padding-left:20px; padding-right:20px;">
                     Dashboard
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -82,7 +82,7 @@
               <div class="circle"><image src="images/capsule-pill.svg" style="width:100px; text-align: center; margin-bottom: 20px; filter: invert(1);"></div>
             </div>
             <br>
-            <div class="main1 info-block">
+            <div class="main1 info-block"style="height:290px;">
             <h2 class="homepage-header">Medication Tracking & Reminders</h2>
             <p class="desc-font">With Paw Patch, pet owners can track the medications that their pets are taking including the name, dose, and frequency. This information can be used to set up reminders so you never forget to give your pet their medicine!</p>
             </div>
@@ -92,7 +92,7 @@
               <div class="circle"><image src="images/clipboard2-pulse.svg" style="width:100px; text-align: center; margin-bottom: 20px; filter: invert(1);"></div>
             </div>
             <br>
-            <div class="main1 info-block">
+            <div class="main1 info-block"style="height:290px;">
             <h2 class="homepage-header">Health & Vaccination Records</h2>
             <p class="desc-font">Keep all your pet's health history and vaccination information in one place! Paw Patch will assist you to make sure you have easy access to your pets health history and vaccination information for the best up-to-date care.</p>
           </div>
@@ -102,7 +102,7 @@
               <div class="circle"><image src="images/heart-pulse.svg" style="width:100px; text-align: center; margin-bottom: 15px; filter: invert(1);"></div>
             </div>
             <br>
-            <div class="main1 info-block">
+            <div class="main1 info-block" style="height:290px;">
             <h2 class="homepage-header">Veterinarian Contact</h2>
             <p class="desc-font">Stay in contact with your veterinarian and allow them access to view your pet's health information for the most accurate and in-depth care they can offer.</p>
             </div>
@@ -112,7 +112,7 @@
               <div class="circle"><image src="images/person-lines-fill.svg" style="width:100px; text-align: center; margin-bottom: 20px; filter: invert(1);"></div>
             </div>
             <br>
-            <div class="main1 info-block">
+            <div class="main1 info-block"style="height:290px;">
             <h2 class="homepage-header">Pet Aids</h2>
             <p class="desc-font">Find a trustworthy pet sitter that is willing and able to take care of a pet that has additional needs such as medication requirements or specialized care. Rest easy knowing your pet is in the best of hands.</p>
             </div>
