@@ -107,20 +107,20 @@ mysqli_close($conn);
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
      
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"style="padding-left:20px; padding-right:20px;">
                     Dashboard
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -153,19 +153,19 @@ mysqli_close($conn);
 
       <div class="header">
         <div>
-          <p class="our-desc">My Pets</p> 
+          <h2 class="our-desc">My Pets</h2> 
         </div>
       </div>
       <br>
 
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height:515px;">
-            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
+            <div class="col-sm sidebar h-100" style="height:515px;">
+            <a class="nav-link side-bar " href="Landing.php">Dashboard</a>
             <hr>
             <a class="nav-link side-bar" href="Account.php">Account</a>
             <hr>
-            <a class="nav-link side-bar" href="Pets.php">Pets</a>
+            <a class="nav-link side-bar activated" href="Pets.php">Pets</a>
             <hr>
                 <a class="nav-link side-bar" href="Vaccinations.php">Vaccines</a>
             <hr>
@@ -175,9 +175,9 @@ mysqli_close($conn);
             <hr>
                 <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="pet-desc">
+          <div class="col-xl-10 col-lg-10 col-md-10" id="pet-desc" style="border:1px solid black">
             <h2 style="color:black">    </h2>
-            <div class="col-xl-2 col-lg-2 col-md-2" style="border:1px solid #ddd">
+            <div class="col-xl-2 col-lg-2 col-md-2" >
             
           </div>
 
@@ -197,11 +197,12 @@ foreach ($petInfo as $pet) {
             <p class="card-text pet-name">Gender: ' . $pet['Gender'] . '</p>
             <p class="card-text pet-name">Health Problems: ' . $pet['Health_Problems'] . '</p>
             <p class="card-text pet-name">General Information: ' . $pet['General'] . '</p>
+            <button type="button" class="pet-add btn btn-primary" style="margin-left: auto">Edit Pet Info</button><br>
           </div>
         </div>
+        <br>
         
-        <button type="button" class="pet-add btn btn-primary" style="margin-left: auto">Edit Pet Info</button>
-
+        <br>
         <div class="form-container" style="display: none; 
         overflow: hidden;
         align: center;
@@ -214,19 +215,19 @@ foreach ($petInfo as $pet) {
 
         <form method="POST" action="update_pet.php">
         <span class = " d-block label label-default">Name</span>
-            <input type="text" name="Name" value="' . $pet['Name'] . '">
+            <input type="text" style="border:1px solid grey;" name="Name" value="' . $pet['Name'] . '">
             <span class = " d-block label label-default">Species</span>
-            <input type="text" name="Species" value="' . $pet['Species'] . '">
+            <input type="text" style="border:1px solid grey;"name="Species" value="' . $pet['Species'] . '">
             <span class = " d-block label label-default">Breed</span>
-            <input type="text" name="Breed" value="' . $pet['Breed'] . '">
+            <input type="text"style="border:1px solid grey;" name="Breed" value="' . $pet['Breed'] . '">
             <span class = " d-block label label-default">Age</span>
-            <input type="text" name="Age" value="' . $pet['Age'] . '">
+            <input type="text" style="border:1px solid grey;"name="Age" value="' . $pet['Age'] . '">
             <span class = " d-block label label-default">Gender</span>
-            <input type="text" name="Gender" value="' . $pet['Gender'] . '">
+            <input type="text" style="border:1px solid grey;"name="Gender" value="' . $pet['Gender'] . '">
             <span class = " d-block label label-default">Health Info</span>
-            <input type="text" name="Health_Problems" value="' . $pet['Health_Problems'] . '">
+            <input type="text" style="border:1px solid grey;"name="Health_Problems" value="' . $pet['Health_Problems'] . '">
             <span class = " d-block label label-default">General Info</span>
-            <input type="text" name="General" value="' . $pet['General'] . '">
+            <input type="text"style="border:1px solid grey;" name="General" value="' . $pet['General'] . '">
             <input type="hidden"  name="PetID" value="' . $pet['PetID'] . '">
             <input type="submit" button type="button" class="submit btn btn-primary" name="update" value="Update">
           </form>
@@ -292,11 +293,15 @@ style="display: none;
             </div>
             
          
-            <input type="submit" button type="button" class="submit btn btn-primary" name="submit" value="Add Pet">
+            <input type="submit" button type="button" class=" btn btn-primary" name="submit" value="Add Pet">
 
           </form>
 </div>
+<div class="col-xl-10 col-lg-10 col-md-10">
+  <button type="submit" class="btn btn-primary" onclick="toggleForm()">Add Pet</button><br>
+  <br>
 
+</div>
           </div>
 
         </div>
@@ -305,13 +310,7 @@ style="display: none;
      
       <br>
 
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
-          <div class="col-xl-10 col-lg-10 col-md-10">
-  <button type="submit" class="pet-create btn btn-primary" onclick="toggleForm()">Add Pet</button>
-
-</div>
+      
 
 
 

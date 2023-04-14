@@ -21,20 +21,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
      
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left:20px; padding-right:20px;">
                     Dashboard
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -73,8 +73,8 @@
      <br>
      <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height:515px;">
-            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
+            <div class="col-sm sidebar h-100" style="height:515px;">
+            <a class="nav-link side-bar" href="Landing.php">Dashboard</a>
             <hr>
             <a class="nav-link side-bar" href="Account.php">Account</a>
             <hr>
@@ -82,13 +82,13 @@
             <hr>
                 <a class="nav-link side-bar" href="Vaccinations.php">Vaccines</a>
             <hr>
-                <a class="nav-link side-bar" href="Meds.php">Medications</a>
+                <a class="nav-link side-bar activated" href="Meds.php">Medications</a>
             <hr>
                 <a class="nav-link side-bar" href="Diet.php">Diet</a>
             <hr>
                 <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="med-desc">
+          <div class="col-xl-10 col-lg-10 col-md-10 align-items-start" id="med-desc" style="border: 1px solid black; margin-top:0px;">
             <h2 style="color:black">Medication Cards for My Pets</h2>
             <br>
             <?php 
@@ -169,39 +169,43 @@ if (mysqli_num_rows($result) > 0) {
 // Close the database connection
 mysqli_close($conn);
 ?>
-          </div>
-        </div>
-      </div>
+          
+        
+      
       <br>
     
       <div class="container-fluid">
   <div class="row">
-    <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
+    
     <div class="col-xl-10 col-lg-10 col-md-10">
-      <button onclick="toggleForm()">Add Medication</button>
+      <button class="btn btn-primary" onclick="toggleForm()">Add Medication</button><br>
+      <br>
 
-      <form action="AddMeds.php" method="post" id="med-form" style="display: none;">
-        <label for="med-name">Medication Name:</label>
-        <input type="text" id="MedName" name="MedName"><br>
+      <form action="AddMeds.php" method="post" id="med-form" style="display: none; background-color: white; padding:10px;">
+        <br><label for="med-name">Medication Name:</label>
+        <input type="text" style="border:1px solid gray" id="MedName" name="MedName"><br>
 
         <label for="start-date">Start Date:</label>
-        <input type="date" id="MedStart" name="MedStart"><br>
-
+        <input type="date" style="border:1px solid gray" id="MedStart" name="MedStart"><br>
+        <br>
         <label for="stop-date">Stop Date:</label>
-        <input type="date" id="MedStop" name="MedStop"><br>
-
+        <input type="date" style="border:1px solid gray" id="MedStop" name="MedStop"><br>
+        <br>
         <label for="dose">Dose:</label>
-        <input type="text" id="MedDose" name="MedDose"><br>
+        <input type="text" style="border:1px solid gray" id="MedDose" name="MedDose"><br>
 
         <label for="pet-name">Pet Name:</label>
         <?php include 'getPets.php'; ?>
         <br>
-
-        <button name="submit" type="submit">Save</button>
+        <br>
+        <button name="submit" class="btn btn-secondary" type="submit">Save</button>
       </form>
    
     </div>
   </div>
+</div>
+</div>
+</div>
 </div>
 
 <script> 

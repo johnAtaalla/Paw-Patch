@@ -23,45 +23,45 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item"style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
      
-        if(isset($_SESSION['email'])) { // If user is logged in, show all links
-          echo '<li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dashboard
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item navtext" href="Account.php">Account</a></li>
-                    <li><a class="dropdown-item navtext" href="Pets.php">Pets</a></li>
-                    <li><a class="dropdown-item navtext" href="Meds.php">Medications</a></li>
-                    <li><a class="dropdown-item navtext" href="Vaccinations.php">Vacinations</a></li>
-                    <li><a class="dropdown-item navtext" href="Diet.php">Diet</a></li>
-                    <li><a class="dropdown-item navtext" href="Schedule.php">Schedule</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item navtext" href="Vet.php">Vet Contact</a></li>
-                    <li><a class="dropdown-item navtext" href="Aid.php">Pet Aid Contact</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                  </ul>
-                </li>';
-        } else { // If user is not logged in, show only Create Account link
-          echo '<li class="nav-item ">
-                  <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
-                </li>
-                <li class="nav-item navtext ">
-                  <a class="nav-link " href="login.php">Login</a>
-                </li>';
-        }
-        ?>
+     if(isset($_SESSION['email'])) { // If user is logged in, show all links
+       echo '<li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"style="padding-left:20px; padding-right:20px;">
+                 Dashboard
+               </a>
+               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 <li><a class="dropdown-item navtext" href="Account.php">Account</a></li>
+                 <li><a class="dropdown-item navtext" href="Pets.php">Pets</a></li>
+                 <li><a class="dropdown-item navtext" href="Meds.php">Medications</a></li>
+                 <li><a class="dropdown-item navtext" href="Vaccinations.php">Vacinations</a></li>
+                 <li><a class="dropdown-item navtext" href="Diet.php">Diet</a></li>
+                 <li><a class="dropdown-item navtext" href="Schedule.php">Schedule</a></li>
+                 <li><hr class="dropdown-divider"></li>
+                 <li><a class="dropdown-item navtext" href="Vet.php">Vet Contact</a></li>
+                 <li><a class="dropdown-item navtext" href="Aid.php">Pet Aid Contact</a></li>
+                 <li><hr class="dropdown-divider"></li>
+                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+               </ul>
+             </li>';
+     } else { // If user is not logged in, show only Create Account link
+       echo '<li class="nav-item ">
+               <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
+             </li>
+             <li class="nav-item navtext ">
+               <a class="nav-link " href="login.php">Login</a>
+             </li>';
+     }
+     ?>
       </ul>
     </div>
   </div>
@@ -77,8 +77,8 @@
 
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height:515px;">
-            <a class="nav-link side-bar activated" href="Landing.php">Dashboard</a>
+            <div class="col-sm sidebar h-100" style="height:515px;">
+            <a class="nav-link side-bar" href="Landing.php">Dashboard</a>
             <hr>
             <a class="nav-link side-bar" href="Account.php">Account</a>
             <hr>
@@ -90,9 +90,9 @@
             <hr>
                 <a class="nav-link side-bar" href="Diet.php">Diet</a>
             <hr>
-                <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
+                <a class="nav-link side-bar activated" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="vacc-desc">
+          <div class="col-xl-10 col-lg-10 col-md-10" id="vacc-desc" style="border:1px solid black; min-height:515px;">
             <h2 style="color:black">Schedules for My Pets </h2>
             <br>
             <?php 
@@ -153,14 +153,11 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($conn);
 
 ?>
-
-          </div>
-          <br>
-      <div class="container-fluid">
+<div class="container-fluid">
         <div class="row" style="margin-top:10px;">
-          <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
+          
           <div class="col-xl-10 col-lg-10 col-md-10">
-          <button onclick="toggleForm()">Add Schedule</button></div>
+          <button class="btn btn-primary"onclick="toggleForm()">Add Schedule</button></div>
        
           <form action="AddSch.php" method="post" id="sch-form" style="display: none;">
           <label for="WeekOf">Week Of:</label>
@@ -181,7 +178,7 @@ mysqli_close($conn);
         <?php include 'getPets.php'; ?>
         <br>
 
-        <button name="submit" type="submit">Save</button>
+        <button name="submit" class="btn btn-primary"type="submit">Save</button>
       </form>
 
 </div>
@@ -193,6 +190,13 @@ mysqli_close($conn);
        
         </div>
       </div>
+          </div>
+        </div>
+      </div>
+      <br>
+     
+      <br>
+      
 
 
       <script> 

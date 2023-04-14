@@ -27,20 +27,20 @@ session_start();
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link active navtext" href="Landing.php">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="About.php">About Us</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="padding-left:20px; padding-right:20px;">
           <a class="nav-link navtext " href="index.php">What We Offer</a>
         </li>
         <?php
      
         if(isset($_SESSION['email'])) { // If user is logged in, show all links
           echo '<li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left:20px; padding-right:20px;">
                     Dashboard
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -81,8 +81,10 @@ session_start();
      
       <div class="container-fluid">
         <div class="row">
-            <div class="col-sm sidebar" style="height = 450px;">
-            <a class="nav-link side-bar activated" href="Account.php">Account</a>
+            <div class="col-sm sidebar h-100" style="height:515px;">
+            <a class="nav-link side-bar" href="Landing.php">Dashboard</a>
+            <hr>
+            <a class="nav-link side-bar" href="Account.php">Account</a>
             <hr>
             <a class="nav-link side-bar" href="Pets.php">Pets</a>
             <hr>
@@ -90,11 +92,11 @@ session_start();
             <hr>
                 <a class="nav-link side-bar" href="Meds.php">Medications</a>
             <hr>
-                <a class="nav-link side-bar" href="Diet.php">Diet</a>
+                <a class="nav-link side-bar activated " href="Diet.php">Diet</a>
             <hr>
-                <a class="nav-link side-bar" href="Diet.php">Schedules</a>
+                <a class="nav-link side-bar" href="Schedule.php">Schedules</a>
             </div>
-          <div class="col-xl-10 col-lg-10 col-md-10" id="diet-desc">
+          <div class="col-xl-10 col-lg-10 col-md-10 align-items-start" id="diet-desc" style="border: 1px solid black;">
             <h2 style="color:black">Diet Information</h2>
             <br>
             
@@ -133,7 +135,7 @@ if (mysqli_num_rows($result) > 0) {
       // Close the previous card (if it exists) and output the edit button
       if ($previousPetID != null) {
         echo "</tbody></table>";
-        echo '<button type="button" class="btn btn-primary" onclick="toggleUpdate()"'.$previousPetID.'">Edit</button>';
+        echo '<button type="button" class="btn btn-secondary" onclick="toggleUpdate()"'.$previousPetID.'">Edit</button>';
         echo '<div id="edit-form'.$previousPetID.'" class="collapse">';
         echo '<form method="post" action="edit_diet.php">';
         echo '<input type="hidden" name="petid" value="'.$previousPetID.'">';
@@ -159,7 +161,7 @@ if (mysqli_num_rows($result) > 0) {
   }
   // Close the final card and output the edit button
   echo "</tbody></table>";
-  echo '<button type="button" class="btn btn-primary" onclick="toggleUpdate()" '.$previousPetID.'">Edit</button>';
+  echo '<button type="button" class="btn btn-secondary" onclick="toggleUpdate()" '.$previousPetID.'">Edit</button>';
   echo '<div id="edit-form-'.$previousPetID.'" class="collapse">';
   echo '<form method="post" action="edit_diet.php">';
   echo '<input type="hidden" name="petid" value="'.$previousPetID.'">';
@@ -177,40 +179,35 @@ if (mysqli_num_rows($result) > 0) {
 // Close the database connection
 mysqli_close($conn);
 ?>
-
-
-
           </div>
           <br>
           <div class="container-fluid">
-        <div class="row" style="margin-top:10px;">
-                <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
+        <div class="row">
+               
           <div class="col-xl-10 col-lg-10 col-md-10">
-      <button onclick="toggleForm()">Add Diet Info</button>
-
+      <button class="btn btn-primary" onclick="toggleForm()">Add Diet Info</button>
+      
       <form action="AddDiet.php" method="post" id="diet-form" style="display: none;">
-        <label for="type">Type of Food:</label>
-        <input type="text" id="Type" name="Type"><br>
+        <br><label for="type">Type of Food:</label><br>
+        <input type="text" style="border:1px solid gray" id="Type" name="Type"><br>
 
-        <label for="portion">Portion:</label>
-        <input type="text" id="Portion" name="Portion"><br>
+        <label for="portion">Portion:</label><br>
+        <input type="text" style="border:1px solid gray" id="Portion" name="Portion"><br>
 
-        <label for="freq">Frequency:</label>
-        <input type="text" id="Frequency" name="Frequency"><br>
+        <label for="freq">Frequency:</label><br>
+        <input type="text" style="border:1px solid gray" id="Frequency" name="Frequency"><br>
 
         
 
         <label for="pet-name">Pet Name:</label>
         <?php include 'getPets.php'; ?>
         <br>
-
-        <button name="submit" type="submit">Save</button>
+        <br>
+        <button name="submit" type="submit" class="btn btn-secondary">Save</button>
       </form>
       </div>
         </div>
       </div>
-      <br>
-    
   </div>
 </div>
 
