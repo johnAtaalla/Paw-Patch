@@ -1,18 +1,18 @@
 <?php
 
-// Start the session
+
 session_start();
 
 
 
-// Check if user is logged in
+
 if (!isset($_SESSION['loggedin'])) {
-  // Redirect to login page if user is not logged in
+ 
   header('Location: login.html');
   exit;
 }
 
-// Connect to the database
+
 $servername = "localhost";
 $username = "root";
 $password = "oakland";
@@ -20,20 +20,20 @@ $dbname = "pawpatch";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-// Check connection
+
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-// Get pets' information for the logged-in user
+
 $email = mysqli_real_escape_string($conn, $_SESSION['email']);
 $sql = "SELECT PetID, Name, Breed, Species, Health_Problems, Age, Gender, General, img_name, img_dir FROM pet WHERE email = '$email'";
 $result = mysqli_query($conn, $sql);
 
-$petInfo = array(); // Array to store pets' information
+$petInfo = array(); 
 
 if (mysqli_num_rows($result) > 0) {
-  // Loop through all rows to fetch information for each pet
+  
   while ($row = mysqli_fetch_assoc($result)) {
     $pet = array(
       'PetID' => $row['PetID'],
@@ -48,11 +48,11 @@ if (mysqli_num_rows($result) > 0) {
       'imageDir' => $row['img_dir']
 
     );
-    // Add pet's information to the array
+    
     array_push($petInfo, $pet);
   }
 } else {
-  // Add information for unknown pet
+  
   $pet = array(
     'PetID' => 'Unknown',
     'Name' => 'Unknown',
@@ -66,7 +66,7 @@ if (mysqli_num_rows($result) > 0) {
     'imageDir' => 'petPhotos/placeholder.jpg'
 
   );
-  // Add pet's information to the array
+ 
   array_push($petInfo, $pet);
 }
 
@@ -118,7 +118,7 @@ mysqli_close($conn);
         </li>
         <?php
      
-        if(isset($_SESSION['email'])) { // If user is logged in, show all links
+        if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"style="padding-left:20px; padding-right:20px;">
                     Dashboard
@@ -137,7 +137,7 @@ mysqli_close($conn);
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
                 </li>';
-        } else { // If user is not logged in, show only Create Account link
+        } else { 
           echo '<li class="nav-item ">
                   <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
                 </li>

@@ -46,7 +46,7 @@ function reArrayFiles(&$attachFile)
     }
 
 
-// Handle form submission
+
 if (isset($_POST['submit'])) {
     $Name = $_POST['Name'];
     $Species = $_POST['Species'];
@@ -58,12 +58,12 @@ if (isset($_POST['submit'])) {
     $email = $_SESSION['email'];
     if(isset($_FILES['userfile'])){
         $file_array = reArrayFiles($_FILES['userfile']);
-        //print_r($file_array);die;
+       
         if ($file_array[0]['error'] == 4){
-            //print_r($file_array);die;
+          
             $name = 'null';
             $img_dir = 'petPhotos/placeholder.jpg';
-            //print_r($img_dir);die;
+           
         }
         else {
         for($i=0;$i<count($file_array);$i++){
@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
                 $extensions = array('jpg', 'png', 'gif', 'jpeg');
                 $file_ext = explode('.',$file_array[$i]['name']);
 
-                //print_r($file_ext);die;
+              
                 $name = $file_ext[0];
 
                 $file_ext = end($file_ext);
@@ -106,24 +106,24 @@ if (isset($_POST['submit'])) {
 
     $conn = OpenCon();
 
-    // Construct the SQL statement with placeholders
+    
     $sql = "INSERT INTO pet (Name, Species, Breed, Age, Gender, Health_Problems, General, email, img_name, img_dir) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // Prepare the statement
+   
     $stmt = $conn->prepare($sql);
 
-    // Bind parameters to the statement
+    
     $stmt->bind_param("sssissssss", $Name, $Species, $Breed, $Age, $Gender, $Health_Problems, $General, $email, $name , $img_dir);
 
-    // Execute the statement
+   
     if ($stmt->execute() === true) {
-        // Output the values for debugging purposes
+     
         header('Location: Pets.php');
     } else {
         header('Location: Pets.php');
     }
 
-    // Close the statement
+   
     $stmt->close();
 
     CloseCon($conn);

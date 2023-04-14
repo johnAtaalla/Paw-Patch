@@ -34,7 +34,7 @@
         </li>
         <?php
      
-     if(isset($_SESSION['email'])) { // If user is logged in, show all links
+     if(isset($_SESSION['email'])) { 
        echo '<li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"style="padding-left:20px; padding-right:20px;">
                  Dashboard
@@ -53,7 +53,7 @@
                  <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                </ul>
              </li>';
-     } else { // If user is not logged in, show only Create Account link
+     } else { 
        echo '<li class="nav-item ">
                <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
              </li>
@@ -96,22 +96,22 @@
             <h2 style="color:black">Schedules for My Pets </h2>
             <br>
             <?php 
-// Connect to the database
+
 $host = 'localhost';
 $user = 'root';
 $pass = 'oakland';
 $db   = 'pawpatch';
 $conn = mysqli_connect($host, $user, $pass, $db);
 
-// Check connection
+
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-// Define the email address you want to retrieve pets for
+
 $email = $_SESSION['email'];
 
-// Execute the query
+
 $sql = "SELECT schedule.Morning, schedule.Afternoon, schedule.Evening, schedule.WeekOf, pet.PetID, pet.Name AS PetName
         FROM schedule
         INNER JOIN pet ON  schedule.PetID = pet.PetID 
@@ -120,36 +120,36 @@ $sql = "SELECT schedule.Morning, schedule.Afternoon, schedule.Evening, schedule.
         ORDER BY pet.PetID";
 $result = mysqli_query($conn, $sql);
 
-// Check if the query returned any results
+
 if (mysqli_num_rows($result) > 0) {
-  $previousPetID = null; // Initialize the previous PetID to null
+  $previousPetID = null; 
   while ($row = mysqli_fetch_assoc($result)) {
     $currentPetID = $row['PetID'];
     if ($currentPetID != $previousPetID) {
-      // Close the previous card (if it exists)
+     
       if ($previousPetID != null) {
         echo "</tbody></table></div></div>";
       }
-      // Open a new card for the current pet
+      
       echo "<div class='card'>";
       echo "<div class='card-header pet-name'>Schedules for ".$row['PetName']."</div>";
       echo "<div class='card-body desc-font'>";
       echo "<table class='table'>";
       echo "<thead><th>Week Of</th><th>Morning</th><th>Afternoon</th><th>Evening</th></tr></thead>";
       echo "<tbody>";
-      $previousPetID = $currentPetID; // Set the previous PetID to the current PetID
+      $previousPetID = $currentPetID; 
     }
-    // Output the current vaccine for the current pet
+   
     echo "<tr><td>".$row['WeekOf']."</td><td>".$row['Morning']."</td><td>".$row['Afternoon']."</td><td>".$row['Evening']."</td></tr>";
   }
-  // Close the final card
+  
   echo "</tbody></table></div></div>";
 } else {
-  // If the query returned no results, output an error message
+ 
   echo "No results found.";
 }
 
-// Close the database connection
+
 mysqli_close($conn);
 
 ?>

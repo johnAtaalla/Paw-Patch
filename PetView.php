@@ -46,7 +46,7 @@ session_start();
         </li>
         <?php
      
-        if(isset($_SESSION['email'])) { // If user is logged in, show all links
+        if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"style="padding-left:20px; padding-right:20px;">
                     Dashboard
@@ -65,7 +65,7 @@ session_start();
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
                 </li>';
-        } else { // If user is not logged in, show only Create Account link
+        } else {
           echo '<li class="nav-item ">
                   <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
                 </li>
@@ -109,28 +109,28 @@ session_start();
             <br>
             
             <?php 
-// Connect to the database
+
 $host = 'localhost';
 $user = 'root';
 $pass = 'oakland';
 $db   = 'pawpatch';
 $conn = mysqli_connect($host, $user, $pass, $db);
 
-// Check connection
+
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-// Define the email address you want to retrieve pets for
+
 $email = $_SESSION['email'];
 
-// Execute the query
+
 $sql = "SELECT * FROM pet";
 $result = mysqli_query($conn, $sql);
 
-// Check if the query returned any results
+
 if (mysqli_num_rows($result) > 0) {
-  // Output the results as a Bootstrap card for each pet
+
   while ($row = mysqli_fetch_assoc($result)) {
     echo "<div class='card'>";
     echo "<div class='card-header pet-name'>Pet Information" . $row['PetName'] . "</div>";
@@ -145,11 +145,11 @@ if (mysqli_num_rows($result) > 0) {
     echo "</div>";
   }
 } else {
-  // If the query returned no results, output an error message
+ 
   echo "No results found.";
 }
 
-// Close the database connection
+
 mysqli_close($conn);
 ?>   
 

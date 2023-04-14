@@ -32,7 +32,7 @@
         </li>
         <?php
      
-        if(isset($_SESSION['email'])) { // If user is logged in, show all links
+        if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left:20px; padding-right:20px;">
                     Dashboard
@@ -51,7 +51,7 @@
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
                 </li>';
-        } else { // If user is not logged in, show only Create Account link
+        } else { 
           echo '<li class="nav-item ">
                   <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
                 </li>
@@ -92,22 +92,22 @@
             <h2 style="color:black">Medication Cards for My Pets</h2>
             <br>
             <?php 
-// Connect to the database
+
 $host = 'localhost';
 $user = 'root';
 $pass = 'oakland';
 $db   = 'pawpatch';
 $conn = mysqli_connect($host, $user, $pass, $db);
 
-// Check connection
+
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-// Define the email address you want to retrieve pets and medications for
+
 $email = $_SESSION['email'];
 
-// Execute the query to retrieve the pets and their medications
+
 $sql = "SELECT med.MedID, med.MedName, med.MedStart, med.MedStop, med.MedDose, pet.PetID, pet.Name AS PetName
         FROM med 
         INNER JOIN pet ON med.PetID = pet.PetID 
@@ -116,24 +116,24 @@ $sql = "SELECT med.MedID, med.MedName, med.MedStart, med.MedStop, med.MedDose, p
 
 $result = mysqli_query($conn, $sql);
 
-// Check if the query returned any results
+
 if (mysqli_num_rows($result) > 0) {
-  // Initialize an array to hold the pet IDs
+ 
   $petIDs = array();
   
-  // Loop through the result and populate the pet IDs array
+ 
   while ($row = mysqli_fetch_assoc($result)) {
     $petID = $row['PetID'];
     
-    // If the pet ID is not in the array, add it
+   
     if (!in_array($petID, $petIDs)) {
       $petIDs[] = $petID;
     }
   }
   
-  // Loop through the pet IDs and output a Bootstrap card for each pet, with their medications displayed in a table
+  
   foreach ($petIDs as $petID) {
-    // Execute the query to retrieve the medications for this pet
+   
     $sql = "SELECT m.MedID, m.MedName, m.MedStart, m.MedStop, m.MedDose, p.Name
             FROM med m
             JOIN pet p ON m.PetID = p.PetID
@@ -141,11 +141,11 @@ if (mysqli_num_rows($result) > 0) {
 
     $result = mysqli_query($conn, $sql);
 
-    // Fetch the pet's name from the query result
+   
     $row = mysqli_fetch_assoc($result);
     $petName = $row['Name'];
 
-    // Output the card header and start the table
+   
     echo "<div class='card'>";
     echo "<div class='card-header pet-name'>Medications for " . $petName . "</div>";
     echo "<div class='card-body desc-font'>";
@@ -153,20 +153,20 @@ if (mysqli_num_rows($result) > 0) {
     echo "<thead><tr><th>Medication Name</th><th>Start Date</th><th>Stop Date</th><th>Dose</th></tr></thead>";
     echo "<tbody>";
 
-    // Loop through the medications and output each row
+   
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr><input type='hidden' name='MedID[]' value='" . $row['MedID'] . "'><td>" . $row['MedName'] . "</td><td>" . $row['MedStart'] . "</td><td>" . $row['MedStop'] . "</td><td>" . $row['MedDose'] . "</td></tr>";
     }
 
-    // Close the table and card body
+  
     echo "</tbody></table></div></div>";
 }
 } else {
-  // If the query returned no results, output an error message
+  
   echo "No results found.";
 }
 
-// Close the database connection
+
 mysqli_close($conn);
 ?>
           

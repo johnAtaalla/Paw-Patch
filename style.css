@@ -11,7 +11,7 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* home page circles */
+
 .circle {
     width: 200px;
     height: 200px;
@@ -57,7 +57,7 @@
     text-align: center;
    
 }
-/* about us page */
+
 
 .our-desc{
     color: black;
@@ -78,7 +78,7 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* login page */
+
 .login{
     margin-top: 100px;
     padding: 25px;
@@ -102,7 +102,7 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Vaccination Page */
+
 #vacc-desc {
     border: 3px solid;
     margin: auto;
@@ -132,7 +132,7 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Pets Page */
+
 .pet-add {
     padding: 5px;
     margin: auto;
@@ -182,7 +182,7 @@
 }
    
 
-/* Medications Page */
+
 .med-add {
     padding: 5px;
     margin: auto;
@@ -211,7 +211,7 @@
     margin-right: 10px;
 }
 
-/* Account Page */
+
 .profile-add {
     padding: 5px;
     margin: auto;
@@ -273,7 +273,7 @@
     color:black;
 }
 
-/* Diet page */
+
 .diet-add {
     padding: 5px;
     margin: auto;
@@ -301,7 +301,7 @@
     margin-right: 10px;
 }
 
-/* SideBar fontsize and family*/
+
 .side-bar{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20pt;

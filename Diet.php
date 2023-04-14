@@ -38,7 +38,7 @@ session_start();
         </li>
         <?php
      
-        if(isset($_SESSION['email'])) { // If user is logged in, show all links
+        if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left:20px; padding-right:20px;">
                     Dashboard
@@ -57,7 +57,7 @@ session_start();
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
                 </li>';
-        } else { // If user is not logged in, show only Create Account link
+        } else { 
           echo '<li class="nav-item ">
                   <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
                 </li>
@@ -101,22 +101,22 @@ session_start();
             <br>
             
             <?php 
-// Connect to the database
+
 $host = 'localhost';
 $user = 'root';
 $pass = 'oakland';
 $db   = 'pawpatch';
 $conn = mysqli_connect($host, $user, $pass, $db);
 
-// Check connection
+
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-// Define the email address you want to retrieve pets for
+
 $email = $_SESSION['email'];
 
-// Execute the query
+
 $sql = "SELECT diet.DietID, diet.Type, diet.Portion, diet.Frequency, pet.PetID, pet.Name AS PetName 
         FROM diet 
         INNER JOIN pet ON diet.PetID = pet.PetID 
@@ -126,13 +126,13 @@ $sql = "SELECT diet.DietID, diet.Type, diet.Portion, diet.Frequency, pet.PetID, 
 
 $result = mysqli_query($conn, $sql);
 
-// Check if the query returned any results
+
 if (mysqli_num_rows($result) > 0) {
-  $previousPetID = null; // Initialize the previous PetID to null
+  $previousPetID = null; 
   while ($row = mysqli_fetch_assoc($result)) {
     $currentPetID = $row['PetID'];
     if ($currentPetID != $previousPetID) {
-      // Close the previous card (if it exists) and output the edit button
+    
       if ($previousPetID != null) {
         echo "</tbody></table>";
         echo '<button type="button" class="btn btn-secondary" onclick="toggleUpdate()"'.$previousPetID.'">Edit</button>';
@@ -147,19 +147,19 @@ if (mysqli_num_rows($result) > 0) {
         echo '</div>';
         echo '</div>';
       }
-      // Open a new card for the current pet
+    
       echo '<div class="card">
        <div class="card-header pet-name">Diet for ' .$row['PetName'].'</div>
        <div class="card-body desc-font">
       <table class="table">
       <thead><tr><th>Type</th><th>Portion</th><th>Frequency</th></tr></thead>
        <tbody>';
-      $previousPetID = $currentPetID; // Set the previous PetID to the current PetID
+      $previousPetID = $currentPetID; 
     }
-    // Output the current diet entry for the current pet
+ 
     echo "<tr><td>".$row['Type']."</td><td>".$row['Portion']."</td><td>".$row['Frequency']."</td></tr>";
   }
-  // Close the final card and output the edit button
+ 
   echo "</tbody></table>";
   echo '<button type="button" class="btn btn-secondary" onclick="toggleUpdate()" '.$previousPetID.'">Edit</button>';
   echo '<div id="edit-form-'.$previousPetID.'" class="collapse">';
@@ -173,10 +173,10 @@ if (mysqli_num_rows($result) > 0) {
   echo '</div>';
   echo '</div>';
 } else {
-  // If the query returned no results, output an error message
+ 
   echo "No results found.";
 }
-// Close the database connection
+
 mysqli_close($conn);
 ?>
           </div>

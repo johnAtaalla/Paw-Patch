@@ -37,7 +37,7 @@
         </li>
         <?php
      
-        if(isset($_SESSION['email'])) { // If user is logged in, show all links
+        if(isset($_SESSION['email'])) { 
           echo '<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"style="padding-left:20px; padding-right:20px;">
                     Dashboard
@@ -56,7 +56,7 @@
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                   </ul>
                 </li>';
-        } else { // If user is not logged in, show only Create Account link
+        } else { 
           echo '<li class="nav-item ">
                   <a class="nav-link navtext" href="AccountCreate.php">Create Account</a>
                 </li>
@@ -97,18 +97,18 @@
           <h2 style="color:black">Reach Out and Contact Our Trusted Pet Aids!</h2>
           <br>
             <?php 
-// Connect to the database
+
 $host = 'localhost';
 $user = 'root';
 $pass = 'oakland';
 $db   = 'pawpatch';
 $conn = mysqli_connect($host, $user, $pass, $db);
 
-// Check connection
+
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
-// SQL query to select users with role Vet
+
 $sql = "SELECT firstname, lastname, email, phone, cert, yearsP FROM user WHERE role = 'Aid'";
 
 $result = $conn->query($sql);
@@ -148,7 +148,7 @@ $result = $conn->query($sql);
 
 
 <?php
-// Close the database connection
+
 mysqli_close($conn);
 ?>
           </div>
