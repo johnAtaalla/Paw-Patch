@@ -153,12 +153,9 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($conn);
 
 ?>
+
           </div>
-        </div>
-      </div>
-      <br>
-     
-      <br>
+          <br>
       <div class="container-fluid">
         <div class="row" style="margin-top:10px;">
           <div class="col-sm sidebar" style="background-color:white; border:none;"></div>
@@ -186,6 +183,11 @@ mysqli_close($conn);
 
         <button name="submit" type="submit">Save</button>
       </form>
+
+</div>
+        </div>
+      </div>
+     <br>
 
        
        
